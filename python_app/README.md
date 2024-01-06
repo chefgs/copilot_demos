@@ -1,4 +1,4 @@
-# Add Numbers with DB
+# Add Numbers and Store Values in Database
 
 This is a simple Python Flask application that adds two numbers together and stores the result in a MongoDB NOSql database.
 
