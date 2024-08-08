@@ -1,0 +1,1895 @@
+{
+  "requesterUsername": "chefgs",
+  "requesterAvatarIconUri": {
+    "$mid": 1,
+    "path": "/u/7605658",
+    "scheme": "https",
+    "authority": "avatars.githubusercontent.com",
+    "query": "v=4"
+  },
+  "responderUsername": "GitHub Copilot",
+  "responderAvatarIconUri": {
+    "id": "copilot"
+  },
+  "initialLocation": "panel",
+  "welcomeMessage": [
+    "Welcome, **@chefgs**, I'm your Copilot and I'm here to help you get things done faster. You can also [start an inline chat session](command:workbench.action.quickchat.launchInlineChat).",
+    "I'm powered by AI, so surprises and mistakes are possible. Make sure to verify any generated code or suggestions, and [share feedback](https://aka.ms/microsoft/vscode-copilot-release) so that we can learn and improve. Check out the [Copilot documentation](https://code.visualstudio.com/docs/editor/github-copilot#_chat-view) to learn more."
+  ],
+  "requests": [
+    {
+      "message": {
+        "text": "/help ",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 5
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 6
+            },
+            "slashCommand": {
+              "command": "help",
+              "detail": "",
+              "sortText": "z1_help",
+              "executeImmediately": true
+            },
+            "kind": "slash"
+          },
+          {
+            "range": {
+              "start": 5,
+              "endExclusive": 6
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 6,
+              "endLineNumber": 1,
+              "endColumn": 7
+            },
+            "text": " ",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:\n\n* [`@workspace`](command:workbench.action.chat.submit?%7B%22inputValue%22%3A%22%40workspace%20How%20do%20I%20build%20this%20project%3F%22%7D) - Ask about your workspace\n\t* [`/explain`](command:workbench.action.chat.submit?%7B%22inputValue%22%3A%22%40workspace%20%2Fexplain%20%22%7D) - Explain how the selected code works\n\t* [`/tests`](command:workbench.action.chat.submit?%7B%22inputValue%22%3A%22%40workspace%20%2Ftests%20%22%7D) - Generate unit tests for the selected code\n\t* [`/fix`](command:workbench.action.chat.submit?%7B%22inputValue%22%3A%22%40workspace%20%2Ffix%20There%20is%20a%20problem%20in%20this%20code.%20Rewrite%20the%20code%20to%20show%20it%20with%20the%20bug%20fixed.%22%7D) - Propose a fix for the problems in the selected code\n\t* [`/new`](command:workbench.action.chat.submit?%7B%22inputValue%22%3A%22%40workspace%20%2Fnew%20Create%20a%20RESTful%20API%20server%20using%20typescript%22%7D) - Scaffold code for a new workspace\n\t* [`/newNotebook`](command:workbench.action.chat.submit?%7B%22inputValue%22%3A%22%40workspace%20%2FnewNotebook%20How%20do%20I%20create%20a%20notebook%20to%20load%20data%20from%20a%20csv%20file%3F%22%7D) - Create a new Jupyter Notebook\n* [`@vscode`](command:workbench.action.chat.submit?%7B%22inputValue%22%3A%22%40vscode%20What%20is%20the%20command%20to%20open%20the%20integrated%20terminal%3F%22%7D) - Ask about VS Code\n\t* [`/search`](command:workbench.action.chat.submit?%7B%22inputValue%22%3A%22%40vscode%20%2Fsearch%20Search%20for%20'foo'%20in%20all%20files%20under%20my%20'src'%20directory%22%7D) - Generate query parameters for workspace search\n\t* [`/api`](command:workbench.action.chat.submit?%7B%22inputValue%22%3A%22%40vscode%20%2Fapi%20How%20do%20I%20add%20text%20to%20the%20status%20bar%3F%22%7D) - Ask about VS Code extension development\n* [`@terminal`](command:workbench.action.chat.submit?%7B%22inputValue%22%3A%22%40terminal%20How%20do%20I%20view%20all%20files%20within%20a%20directory%20including%20sub-directories%22%7D) - Ask how to do something in the terminal\n\n\nTo have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+          "isTrusted": {
+            "enabledCommands": [
+              "workbench.action.chat.submit",
+              "inlineChat.start"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "isCanceled": false,
+      "contentReferences": [],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "Create a dockerfile for the image creation for this app",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 55
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 56
+            },
+            "text": "Create a dockerfile for the image creation for this app",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Here's a Dockerfile for your Flask application. This Dockerfile uses a Python 3.8 base image, installs the necessary packages, copies your application into the container, and sets the necessary environment variables and command to run your application.\n\n```Dockerfile\n# Use an official Python runtime as a parent image\nFROM python:3.8-slim-buster\n\n# Set the working directory in the container to /app\nWORKDIR /app\n\n# Add the current directory contents into the container at /app\nADD . /app\n\n# Install any needed packages specified in requirements.txt\nRUN pip install --no-cache-dir -r requirements.txt\n\n# Make port 5000 available to the world outside this container\nEXPOSE 5000\n\n# Define environment variable\nENV NAME World\n\n# Run app.py when the container launches\nCMD [\"python\", \"add_numbers_with_db.py\"]\n```\n\nPlease note that this Dockerfile assumes that you have a `requirements.txt` file in the same directory as your `add_numbers_with_db.py` file, and that it lists all the Python packages your application needs, including Flask and PyMongo. If you don't have this file, you can create it by running `pip freeze > requirements.txt` in your local environment.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "followups": [
+        {
+          "kind": "reply",
+          "message": "How can I build and run the Docker image for my Flask application?",
+          "title": "How can I build and run the Docker image for my Flask application?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "",
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        },
+        "name": "",
+        "extensionPublisherId": "",
+        "extensionDisplayName": "",
+        "extensionId": {
+          "value": "",
+          "_lower": ""
+        }
+      },
+      "usedContext": {
+        "documents": [
+          {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "version": 1,
+            "ranges": [
+              {
+                "startLineNumber": 1,
+                "startColumn": 1,
+                "endLineNumber": 20,
+                "endColumn": 1
+              }
+            ]
+          }
+        ],
+        "kind": "usedContext"
+      },
+      "contentReferences": [
+        {
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 20,
+              "endColumn": 1
+            }
+          },
+          "kind": "reference"
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "create a requirements.txt file",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 30
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 31
+            },
+            "text": "create a requirements.txt file",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Based on the code snippet you provided, your `requirements.txt` file should include Flask and PyMongo, which are the Python packages your application imports. Here's what your `requirements.txt` file should look like:\n\n```plaintext\nFlask==1.1.2\npymongo==3.11.0\n```\n\nThese versions are just examples. You should replace them with the versions you're actually using. You can find out what versions you're using with the `pip show` command. For example, `pip show Flask` will tell you what version of Flask you're using.\n\nIf you have other dependencies in your application, you should add them to the `requirements.txt` file as well.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "followups": [
+        {
+          "kind": "reply",
+          "message": "What is the command to build a Docker image using the Dockerfile?",
+          "title": "What is the command to build a Docker image using the Dockerfile?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "",
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        },
+        "name": "",
+        "extensionPublisherId": "",
+        "extensionDisplayName": "",
+        "extensionId": {
+          "value": "",
+          "_lower": ""
+        }
+      },
+      "usedContext": {
+        "documents": [
+          {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "version": 1,
+            "ranges": [
+              {
+                "startLineNumber": 1,
+                "startColumn": 1,
+                "endLineNumber": 20,
+                "endColumn": 1
+              }
+            ]
+          }
+        ],
+        "kind": "usedContext"
+      },
+      "contentReferences": [
+        {
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 20,
+              "endColumn": 1
+            }
+          },
+          "kind": "reference"
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "What is the command to build a Docker image using the Dockerfile?",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 65
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 66
+            },
+            "text": "What is the command to build a Docker image using the Dockerfile?",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "To build a Docker image using the Dockerfile, you can use the `docker build` command. You also need to specify a tag for the image using the `-t` option. Here's an example:\n\n```bash\ndocker build -t my-flask-app .\n```\n\nIn this command, `my-flask-app` is the tag for the image, and the `.` specifies that the Dockerfile is in the current directory. After running this command, Docker will build an image according to the instructions in your Dockerfile.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "followups": [
+        {
+          "kind": "reply",
+          "message": "How can I run the Docker image that I just built?",
+          "title": "How can I run the Docker image that I just built?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "",
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        },
+        "name": "",
+        "extensionPublisherId": "",
+        "extensionDisplayName": "",
+        "extensionId": {
+          "value": "",
+          "_lower": ""
+        }
+      },
+      "usedContext": {
+        "documents": [
+          {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "version": 1,
+            "ranges": [
+              {
+                "startLineNumber": 1,
+                "startColumn": 1,
+                "endLineNumber": 20,
+                "endColumn": 1
+              }
+            ]
+          }
+        ],
+        "kind": "usedContext"
+      },
+      "contentReferences": [
+        {
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 20,
+              "endColumn": 1
+            }
+          },
+          "kind": "reference"
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "Provide the same functionality added in this file as a java script framework using express app, react and nodejs with mongodb",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 125
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 126
+            },
+            "text": "Provide the same functionality added in this file as a java script framework using express app, react and nodejs with mongodb",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Here's how you can implement the same functionality using Node.js, Express, React, and MongoDB. \n\nFirst, let's create the server-side code using Node.js and Express:\n\n```javascript\n// server.js\nconst express = require('express');\nconst bodyParser = require('body-parser');\nconst MongoClient = require('mongodb').MongoClient;\n\nconst app = express();\napp.use(bodyParser.json());\n\n// Connect to MongoDB\nconst client = new MongoClient('mongodb://localhost:27017/');\nlet db;\nclient.connect(err => {\n  db = client.db('mydatabase');\n});\n\napp.post('/', (req, res) => {\n  const num1 = parseFloat(req.body.num1);\n  const num2 = parseFloat(req.body.num2);\n  const result = num1 + num2;\n\n  // Store the numbers and result in the database\n  db.collection('results').insertOne({ num1, num2, result }, (err, r) => {\n    res.send({ result });\n  });\n});\n\napp.listen(3000, () => console.log('Server running on port 3000'));\n```\n\nNext, let's create the client-side code using React:\n\n```jsx\n// App.js\nimport React, { useState } from 'react';\nimport axios from 'axios';\n\nfunction App() {\n  const [num1, setNum1] = useState('');\n  const [num2, setNum2] = useState('');\n  const [result, setResult] = useState(null);\n\n  const addNumbers = async () => {\n    const response = await axios.post('http://localhost:3000/', { num1, num2 });\n    setResult(response.data.result);\n  };\n\n  return (\n    <div>\n      <input type=\"number\" value={num1} onChange={e => setNum1(e.target.value)} />\n      <input type=\"number\" value={num2} onChange={e => setNum2(e.target.value)} />\n      <button onClick={addNumbers}>Add</button>\n      {result && <p>Result: {result}</p>}\n    </div>\n  );\n}\n\nexport default App;\n```\n\nPlease note that you need to install the necessary packages (`express`, `body-parser`, `mongodb`, `react`, `react-dom`, `axios`) using npm or yarn. Also, you need to set up a React project and replace the `App.js` file with the provided code.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "followups": [
+        {
+          "kind": "reply",
+          "message": "How can I run the Node.js and React application with Docker?",
+          "title": "How can I run the Node.js and React application with Docker?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "",
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        },
+        "name": "",
+        "extensionPublisherId": "",
+        "extensionDisplayName": "",
+        "extensionId": {
+          "value": "",
+          "_lower": ""
+        }
+      },
+      "usedContext": {
+        "documents": [
+          {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "version": 1,
+            "ranges": [
+              {
+                "startLineNumber": 1,
+                "startColumn": 1,
+                "endLineNumber": 20,
+                "endColumn": 1
+              }
+            ]
+          }
+        ],
+        "kind": "usedContext"
+      },
+      "contentReferences": [
+        {
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 20,
+              "endColumn": 1
+            }
+          },
+          "kind": "reference"
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "how to structure these files in the folder that separates ui and backend code",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 77
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 78
+            },
+            "text": "how to structure these files in the folder that separates ui and backend code",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Here's a suggested structure for your project:\n\n```\n/myapp\n  /backend\n    server.js\n    package.json\n  /frontend\n    /src\n      App.js\n      index.js\n    package.json\n    public\n      index.html\n```\n\nIn this structure:\n\n- The `backend` directory contains the server-side code. The `server.js` file is the entry point for your Express app. The `package.json` file lists the dependencies for the server-side code.\n\n- The `frontend` directory contains the client-side code. The `src` directory contains the React components. The `App.js` file is the main React component. The `index.js` file is the entry point for your React app. The `package.json` file lists the dependencies for the client-side code.\n\n- The `public` directory contains static files that are served by the React app. The `index.html` file is the main HTML file for your React app.\n\nThis structure separates the UI code (in the `frontend` directory) from the backend code (in the `backend` directory), which can make your project easier to manage.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "followups": [
+        {
+          "kind": "reply",
+          "message": "How can I run the backend and frontend code separately in my project?",
+          "title": "How can I run the backend and frontend code separately in my project?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "",
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        },
+        "name": "",
+        "extensionPublisherId": "",
+        "extensionDisplayName": "",
+        "extensionId": {
+          "value": "",
+          "_lower": ""
+        }
+      },
+      "usedContext": {
+        "documents": [
+          {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "version": 1,
+            "ranges": [
+              {
+                "startLineNumber": 1,
+                "startColumn": 1,
+                "endLineNumber": 20,
+                "endColumn": 1
+              }
+            ]
+          }
+        ],
+        "kind": "usedContext"
+      },
+      "contentReferences": [
+        {
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 20,
+              "endColumn": 1
+            }
+          },
+          "kind": "reference"
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "what are the dependencies that needs to be added in package.json for backend and frontend code",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 94
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 95
+            },
+            "text": "what are the dependencies that needs to be added in package.json for backend and frontend code",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "For the backend code, you'll need the following dependencies:\n\n```json\n{\n  \"name\": \"backend\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"server.js\",\n  \"scripts\": {\n    \"start\": \"node server.js\"\n  },\n  \"dependencies\": {\n    \"express\": \"^4.17.1\",\n    \"body-parser\": \"^1.19.0\",\n    \"mongodb\": \"^3.6.6\"\n  }\n}\n```\n\nFor the frontend code, you'll need the following dependencies:\n\n```json\n{\n  \"name\": \"frontend\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"src/index.js\",\n  \"scripts\": {\n    \"start\": \"react-scripts start\",\n    \"build\": \"react-scripts build\",\n    \"test\": \"react-scripts test\",\n    \"eject\": \"react-scripts eject\"\n  },\n  \"dependencies\": {\n    \"react\": \"^17.0.2\",\n    \"react-dom\": \"^17.0.2\",\n    \"axios\": \"^0.21.1\"\n  },\n  \"devDependencies\": {\n    \"react-scripts\": \"4.0.3\"\n  }\n}\n```\n\nThese are the minimum dependencies you need based on the code you provided. You might need to add more dependencies depending on the additional features",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "errorDetails": {
+          "message": "Sorry, the response matched public code so it was blocked. Please rephrase your prompt. [Learn more](https://aka.ms/copilot-chat-filtered-docs).",
+          "responseIsFiltered": true
+        }
+      },
+      "followups": [],
+      "isCanceled": false,
+      "agent": {
+        "id": "",
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        },
+        "name": "",
+        "extensionPublisherId": "",
+        "extensionDisplayName": "",
+        "extensionId": {
+          "value": "",
+          "_lower": ""
+        }
+      },
+      "usedContext": {
+        "documents": [
+          {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "version": 1,
+            "ranges": [
+              {
+                "startLineNumber": 1,
+                "startColumn": 1,
+                "endLineNumber": 20,
+                "endColumn": 1
+              }
+            ]
+          }
+        ],
+        "kind": "usedContext"
+      },
+      "contentReferences": [
+        {
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 20,
+              "endColumn": 1
+            }
+          },
+          "kind": "reference"
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "what are the dependencies that needs to be added in package.json for backend and frontend code for our implementation",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 117
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 118
+            },
+            "text": "what are the dependencies that needs to be added in package.json for backend and frontend code for our implementation",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "For the backend code, you'll need the following dependencies:\n\n```json\n{\n  \"name\": \"backend\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"server.js\",\n  \"scripts\": {\n    \"start\": \"node server.js\"\n  },\n  \"dependencies\": {\n    \"express\": \"^4.17.1\",\n    \"body-parser\": \"^1.19.0\",\n    \"mongodb\": \"^3.6.6\"\n  }\n}\n```\n\nFor the frontend code, you'll need the following dependencies:\n\n```json\n{\n  \"name\": \"frontend\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"src/index.js\",\n  \"scripts\": {\n    \"start\": \"react-scripts start\",\n    \"build\": \"react-scripts build\",\n    \"test\": \"react-scripts test\",\n    \"eject\": \"react-scripts eject\"\n  },\n  \"dependencies\": {\n    \"react\": \"^17.0.2\",\n    \"react-dom\": \"^17.0.2\",\n    \"axios\": \"^0.21.1\"\n  },\n  \"devDependencies\": {\n    \"react-scripts\": \"4.0.3\"\n  }\n}\n```\n\nThese are the minimum dependencies you need based on the code you provided. You might need to add more dependencies depending on the additional",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "errorDetails": {
+          "message": "Sorry, the response matched public code so it was blocked. Please rephrase your prompt. [Learn more](https://aka.ms/copilot-chat-filtered-docs).",
+          "responseIsFiltered": true
+        }
+      },
+      "followups": [],
+      "isCanceled": false,
+      "agent": {
+        "id": "",
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        },
+        "name": "",
+        "extensionPublisherId": "",
+        "extensionDisplayName": "",
+        "extensionId": {
+          "value": "",
+          "_lower": ""
+        }
+      },
+      "usedContext": {
+        "documents": [
+          {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "version": 1,
+            "ranges": [
+              {
+                "startLineNumber": 1,
+                "startColumn": 1,
+                "endLineNumber": 20,
+                "endColumn": 1
+              }
+            ]
+          }
+        ],
+        "kind": "usedContext"
+      },
+      "contentReferences": [
+        {
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 20,
+              "endColumn": 1
+            }
+          },
+          "kind": "reference"
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "what are the dependencies that needs to be added for backend and frontend code",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 78
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 79
+            },
+            "text": "what are the dependencies that needs to be added for backend and frontend code",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "For the backend code, you'll need the following dependencies:\n\n```json\n{\n  \"name\": \"backend\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"server.js\",\n  \"scripts\": {\n    \"start\": \"node server.js\"\n  },\n  \"dependencies\": {\n    \"express\": \"^4.17.1\",\n    \"body-parser\": \"^1.19.0\",\n    \"mongodb\": \"^3.6.6\"\n  }\n}\n```\n\nFor the frontend code, you'll need the following dependencies:\n\n```json\n{\n  \"name\": \"frontend\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"src/index.js\",\n  \"scripts\": {\n    \"start\": \"react-scripts start\",\n    \"build\": \"react-scripts build\",\n    \"test\": \"react-scripts test\",\n    \"eject\": \"react-scripts eject\"\n  },\n  \"dependencies\": {\n    \"react\": \"^17.0.2\",\n    \"react-dom\": \"^17.0.2\",\n    \"axios\": \"^0.21.1\"\n  },\n  \"devDependencies\": {\n    \"react-scripts\": \"4.0.3\"\n  }\n}\n```\n\nThese are the minimum dependencies you need based on the code you provided. You might need to add more dependencies depending on the additional",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "errorDetails": {
+          "message": "Sorry, the response matched public code so it was blocked. Please rephrase your prompt. [Learn more](https://aka.ms/copilot-chat-filtered-docs).",
+          "responseIsFiltered": true
+        }
+      },
+      "followups": [],
+      "isCanceled": false,
+      "agent": {
+        "id": "",
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        },
+        "name": "",
+        "extensionPublisherId": "",
+        "extensionDisplayName": "",
+        "extensionId": {
+          "value": "",
+          "_lower": ""
+        }
+      },
+      "usedContext": {
+        "documents": [
+          {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "version": 1,
+            "ranges": [
+              {
+                "startLineNumber": 1,
+                "startColumn": 1,
+                "endLineNumber": 20,
+                "endColumn": 1
+              }
+            ]
+          }
+        ],
+        "kind": "usedContext"
+      },
+      "contentReferences": [
+        {
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 20,
+              "endColumn": 1
+            }
+          },
+          "kind": "reference"
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "what are the dependencies that needs to be added in package.json for backend and frontend code",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 94
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 95
+            },
+            "text": "what are the dependencies that needs to be added in package.json for backend and frontend code",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "For the backend code, you'll need the following dependencies:\n\n```json\n{\n  \"name\": \"backend\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"server.js\",\n  \"scripts\": {\n",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "isCanceled": true,
+      "agent": {
+        "id": "",
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        },
+        "name": "",
+        "extensionPublisherId": "",
+        "extensionDisplayName": "",
+        "extensionId": {
+          "value": "",
+          "_lower": ""
+        }
+      },
+      "usedContext": {
+        "documents": [
+          {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "version": 1,
+            "ranges": [
+              {
+                "startLineNumber": 1,
+                "startColumn": 1,
+                "endLineNumber": 20,
+                "endColumn": 1
+              }
+            ]
+          }
+        ],
+        "kind": "usedContext"
+      },
+      "contentReferences": [
+        {
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 20,
+              "endColumn": 1
+            }
+          },
+          "kind": "reference"
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "what are the dependencies that needs to be added in package.json for backend and frontend code",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 94
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 95
+            },
+            "text": "what are the dependencies that needs to be added in package.json for backend and frontend code",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "For the backend code, you'll need the following dependencies:\n\n```json\n{\n  \"name\": \"backend\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"server.js\",\n  \"scripts\": {\n    \"start\": \"node server.js\"\n  },\n  \"dependencies\": {\n    \"express\": \"^4.17.1\",\n    \"body-parser\": \"^1.19.0\",\n    \"mongodb\": \"^3.6.6\"\n  }\n}\n```\n\nFor the frontend code, you'll need the following dependencies:\n\n```json\n{\n  \"name\": \"frontend\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"src/index.js\",\n  \"scripts\": {\n    \"start\": \"react-scripts start\",\n    \"build\": \"react-scripts build\",\n    \"test\": \"react-scripts test\",\n    \"eject\": \"react-scripts eject\"\n  },\n  \"dependencies\": {\n    \"react\": \"^17.0.2\",\n    \"react-dom\": \"^17.0.2\",\n    \"axios\": \"^0.21.1\"\n  },\n  \"devDependencies\": {\n    \"react-scripts\": \"4.0.3\"\n  }\n}\n```\n\nThese are the minimum dependencies you need based on the code you provided. You might need to add more dependencies depending on the additional",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "errorDetails": {
+          "message": "Sorry, the response matched public code so it was blocked. Please rephrase your prompt. [Learn more](https://aka.ms/copilot-chat-filtered-docs).",
+          "responseIsFiltered": true
+        }
+      },
+      "followups": [],
+      "isCanceled": false,
+      "agent": {
+        "id": "",
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        },
+        "name": "",
+        "extensionPublisherId": "",
+        "extensionDisplayName": "",
+        "extensionId": {
+          "value": "",
+          "_lower": ""
+        }
+      },
+      "usedContext": {
+        "documents": [
+          {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "version": 1,
+            "ranges": [
+              {
+                "startLineNumber": 1,
+                "startColumn": 1,
+                "endLineNumber": 20,
+                "endColumn": 1
+              }
+            ]
+          }
+        ],
+        "kind": "usedContext"
+      },
+      "contentReferences": [
+        {
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/python_app/add_numbers_with_db.py",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 20,
+              "endColumn": 1
+            }
+          },
+          "kind": "reference"
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "what is the code to be added in frontend src index.js file",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 58
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 59
+            },
+            "text": "what is the code to be added in frontend src index.js file",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "In the `src/index.js` file, you need to import the React and ReactDOM libraries, as well as the `App` component from the `App.js` file. Then, you use the `ReactDOM.render` function to render the `App` component into a div with the id of `root`. Here's what the `src/index.js` file should look like:\n\n```javascript\nimport React from 'react';\nimport ReactDOM from 'react-dom';\nimport App from './App';\n\nReactDOM.render(\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>,\n  document.getElementById('root')\n);\n```\n\nThis code assumes that there's a div with the id of `root` in your `public/index.html` file, which is where the React app will be mounted. This is the standard setup for a React app.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "followups": [
+        {
+          "kind": "reply",
+          "message": "How can I configure the MongoDB connection in the backend code?",
+          "title": "How can I configure the MongoDB connection in the backend code?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "",
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        },
+        "name": "",
+        "extensionPublisherId": "",
+        "extensionDisplayName": "",
+        "extensionId": {
+          "value": "",
+          "_lower": ""
+        }
+      },
+      "usedContext": {
+        "documents": [
+          {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/App.js",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/App.js",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/App.js",
+              "scheme": "file"
+            },
+            "version": 2,
+            "ranges": [
+              {
+                "startLineNumber": 1,
+                "startColumn": 1,
+                "endLineNumber": 20,
+                "endColumn": 48
+              }
+            ]
+          }
+        ],
+        "kind": "usedContext"
+      },
+      "contentReferences": [
+        {
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/App.js",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/App.js",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/App.js",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 20,
+              "endColumn": 48
+            }
+          },
+          "kind": "reference"
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "what is the code to be added index.html for the ui and backend added ",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 69
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 70
+            },
+            "text": "what is the code to be added index.html for the ui and backend added ",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "The `index.html` file in the `public` directory of your React application should look something like this:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <title>My App</title>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n    <script src=\"/static/js/bundle.js\"></script>\n  </body>\n</html>\n```\n\nIn this file:\n\n- The `div` with the id of `root` is where your React app will be mounted.\n- The `script` tag at the end of the `body` is where the bundled JavaScript file that is generated by React during the build process will be included. This file contains your entire React application.\n\nPlease note that you don't need to manually add the `script` tag for the bundled JavaScript file. The React build process will automatically inject it into the `index.html` file during the build process.\n\nThe backend code doesn't directly interact with the `index.html` file. The backend and frontend communicate through HTTP requests and responses.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "followups": [
+        {
+          "kind": "reply",
+          "message": "How can I configure the MongoDB connection in the backend code?",
+          "title": "How can I configure the MongoDB connection in the backend code?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "",
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        },
+        "name": "",
+        "extensionPublisherId": "",
+        "extensionDisplayName": "",
+        "extensionId": {
+          "value": "",
+          "_lower": ""
+        }
+      },
+      "usedContext": {
+        "documents": [
+          {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/index.js",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/index.js",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/index.js",
+              "scheme": "file"
+            },
+            "version": 2,
+            "ranges": [
+              {
+                "startLineNumber": 1,
+                "startColumn": 1,
+                "endLineNumber": 10,
+                "endColumn": 3
+              }
+            ]
+          }
+        ],
+        "kind": "usedContext"
+      },
+      "contentReferences": [
+        {
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/index.js",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/index.js",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/index.js",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 10,
+              "endColumn": 3
+            }
+          },
+          "kind": "reference"
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "we are using index.js here, so index.hml needed update",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 54
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 55
+            },
+            "text": "we are using index.js here, so index.hml needed update",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "The `index.html` file in the `public` directory of your React application should look something like this:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <title>My App</title>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n```\n\nIn this file:\n\n- The `div` with the id of `root` is where your React app will be mounted. This corresponds to the `document.getElementById('root')` in your `index.js` file.\n\nYou don't need to include any script tags in your `index.html` file. When you run the `npm start` command, the Create React App development server will automatically include the compiled JavaScript code in the page.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "followups": [
+        {
+          "kind": "reply",
+          "message": "How can I start the development server for my React application?",
+          "title": "How can I start the development server for my React application?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "",
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        },
+        "name": "",
+        "extensionPublisherId": "",
+        "extensionDisplayName": "",
+        "extensionId": {
+          "value": "",
+          "_lower": ""
+        }
+      },
+      "usedContext": {
+        "documents": [
+          {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/index.js",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/index.js",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/index.js",
+              "scheme": "file"
+            },
+            "version": 2,
+            "ranges": [
+              {
+                "startLineNumber": 1,
+                "startColumn": 1,
+                "endLineNumber": 10,
+                "endColumn": 3
+              }
+            ]
+          }
+        ],
+        "kind": "usedContext"
+      },
+      "contentReferences": [
+        {
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/index.js",
+              "external": "file:///Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/index.js",
+              "path": "/Users/gsaravanan/Documents/github/copilot_demos/jsframework_app/frontend/index.js",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 10,
+              "endColumn": 3
+            }
+          },
+          "kind": "reference"
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "@workspace ",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 10
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 11
+            },
+            "agent": {
+              "id": "workspace",
+              "metadata": {
+                "description": "Ask about your workspace",
+                "fullName": "Workspace",
+                "themeIcon": {
+                  "id": "code"
+                },
+                "hasSlashCommands": true,
+                "hasFollowups": true,
+                "isSecondary": true,
+                "sampleRequest": "How do I build this project?",
+                "supportIssueReporting": false
+              },
+              "name": "workspace",
+              "extensionPublisherId": "",
+              "extensionDisplayName": "",
+              "extensionId": {
+                "value": "",
+                "_lower": ""
+              }
+            },
+            "kind": "agent"
+          },
+          {
+            "range": {
+              "start": 10,
+              "endExclusive": 11
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 11,
+              "endLineNumber": 1,
+              "endColumn": 12
+            },
+            "text": " ",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [],
+      "result": {
+        "errorDetails": {
+          "message": "Please specify a question when using this command.\n\nUsage: @workspace  Ask a question about the files in your current workspace",
+          "responseIsFiltered": false,
+          "responseIsIncomplete": false
+        }
+      },
+      "followups": [],
+      "isCanceled": false,
+      "agent": {
+        "id": "workspace",
+        "metadata": {
+          "description": "Ask about your workspace",
+          "fullName": "Workspace",
+          "themeIcon": {
+            "id": "code"
+          },
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isSecondary": true,
+          "sampleRequest": "How do I build this project?",
+          "supportIssueReporting": false
+        },
+        "name": "workspace",
+        "extensionPublisherId": "",
+        "extensionDisplayName": "",
+        "extensionId": {
+          "value": "",
+          "_lower": ""
+        }
+      },
+      "contentReferences": [],
+      "codeCitations": []
+    }
+  ]
+}

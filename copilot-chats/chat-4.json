@@ -1,0 +1,284 @@
+{
+  "requesterUsername": "chefgs",
+  "requesterAvatarIconUri": {
+    "$mid": 1,
+    "path": "/u/7605658",
+    "scheme": "https",
+    "authority": "avatars.githubusercontent.com",
+    "query": "v=4"
+  },
+  "responderUsername": "GitHub Copilot",
+  "responderAvatarIconUri": {
+    "id": "copilot"
+  },
+  "initialLocation": "panel",
+  "welcomeMessage": [
+    "Welcome, **@chefgs**, I'm your Copilot and I'm here to help you get things done faster. You can also [start an inline chat session](command:workbench.action.quickchat.launchInlineChat).",
+    "I'm powered by AI, so surprises and mistakes are possible. Make sure to verify any generated code or suggestions, and [share feedback](https://aka.ms/microsoft/vscode-copilot-release) so that we can learn and improve. Check out the [Copilot documentation](https://code.visualstudio.com/docs/editor/github-copilot#_chat-view) to learn more."
+  ],
+  "requests": [
+    {
+      "message": {
+        "text": "@workspace /explain ",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 10
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 11
+            },
+            "agent": {
+              "id": "workspace",
+              "metadata": {
+                "description": "Ask about your workspace",
+                "fullName": "Workspace",
+                "themeIcon": {
+                  "id": "code"
+                },
+                "hasSlashCommands": true,
+                "hasFollowups": true,
+                "isSecondary": true,
+                "sampleRequest": "How do I build this project?",
+                "supportIssueReporting": false
+              },
+              "name": "workspace",
+              "extensionPublisherId": "",
+              "extensionDisplayName": "",
+              "extensionId": {
+                "value": "",
+                "_lower": ""
+              }
+            },
+            "kind": "agent"
+          },
+          {
+            "range": {
+              "start": 10,
+              "endExclusive": 11
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 11,
+              "endLineNumber": 1,
+              "endColumn": 12
+            },
+            "text": " ",
+            "kind": "text"
+          },
+          {
+            "range": {
+              "start": 11,
+              "endExclusive": 19
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 12,
+              "endLineNumber": 1,
+              "endColumn": 20
+            },
+            "command": {
+              "name": "explain",
+              "description": "Explain how the selected code works"
+            },
+            "kind": "subcommand"
+          },
+          {
+            "range": {
+              "start": 19,
+              "endExclusive": 20
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 20,
+              "endLineNumber": 1,
+              "endColumn": 21
+            },
+            "text": " ",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "This shell script is used to set up a GitHub Actions runner on a Linux machine. A GitHub Actions runner is a server that GitHub uses to run your CI/CD jobs. This script automates the process of downloading, installing, and configuring the runner.\n\nThe script takes two arguments: the name of the repository where the runner will be added (`repo_to_add_runner`), and a GitHub token (`github_token`) that has the necessary permissions to add a runner to the repository.\n\nFirst, the script creates a directory named `actions-runner` and navigates into it. It then downloads the latest version of the GitHub Actions runner package for Linux x64 from GitHub's servers using the `curl` command. \n\nOptionally, you can validate the hash of the downloaded file to ensure its integrity. This step is commented out in the script.\n\nNext, the script creates another directory named `runner-files` within the `actions-runner` directory and navigates into it. It then extracts the downloaded runner package using the `tar` command.\n\nThe script then uses `curl` to make a POST request to the GitHub API to create a registration token for the runner. This token is necessary to register the runner with the specified repository. The `jq` command is used to extract the token from the JSON response.\n\nThe script then runs the `config.sh` script that comes with the runner package. This script configures the runner, specifying the repository URL and the registration token. The `--unattended` flag means that the script runs without requiring user input.\n\nFinally, the script runs the `svc.sh` script, also included in the runner package, to install the runner as a service and start it. This means that the runner will automatically start running jobs as soon as they are available in the repository's Actions queue.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "followups": [
+        {
+          "kind": "reply",
+          "message": "What are the system requirements for running a GitHub Actions runner?",
+          "title": "What are the system requirements for running a GitHub Actions runner?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "workspace",
+        "metadata": {
+          "description": "Ask about your workspace",
+          "fullName": "Workspace",
+          "themeIcon": {
+            "id": "code"
+          },
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isSecondary": true,
+          "sampleRequest": "How do I build this project?",
+          "supportIssueReporting": false
+        },
+        "name": "workspace",
+        "extensionPublisherId": "",
+        "extensionDisplayName": "",
+        "extensionId": {
+          "value": "",
+          "_lower": ""
+        }
+      },
+      "slashCommand": {
+        "name": "explain",
+        "description": "Explain how the selected code works"
+      },
+      "contentReferences": [
+        {
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/create_selfhosted_runners/setup-runner.sh",
+              "external": "file:///Users/gsaravanan/Documents/github/create_selfhosted_runners/setup-runner.sh",
+              "path": "/Users/gsaravanan/Documents/github/create_selfhosted_runners/setup-runner.sh",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 23,
+              "endColumn": 1
+            }
+          },
+          "kind": "reference"
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "Add a validation step at the beginning of the script to check input args are passed or not, if not ask the user to add the input args as a help message",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 151
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 152
+            },
+            "text": "Add a validation step at the beginning of the script to check input args are passed or not, if not ask the user to add the input args as a help message",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Here's how you can add a validation step at the beginning of the script to check if the input arguments are passed or not:\n\n```bash\n#!/bin/bash\n\n# Check if both arguments are provided\nif [ \"$#\" -ne 2 ]; then\n    echo \"Missing arguments. Usage: $0 <repo_to_add_runner> <github_token>\"\n    exit 1\nfi\n\nrepo_to_add_runner=$1\ngithub_token=$2\n\n# Rest of the script...\n```\n\nThis script checks if the number of arguments (`$#`) is not equal to 2. If it's not, it prints a usage message and exits with a status code of 1, indicating an error. If the number of arguments is 2, it assigns the arguments to the `repo_to_add_runner` and `github_token` variables and proceeds with the rest of the script.",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "followups": [
+        {
+          "kind": "reply",
+          "message": "How can I check the status of the GitHub Actions runner service?",
+          "title": "How can I check the status of the GitHub Actions runner service?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "id": "copilot",
+        "metadata": {
+          "description": "",
+          "fullName": "GitHub Copilot",
+          "hasSlashCommands": true,
+          "hasFollowups": true,
+          "isDefault": true,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following agents which have specialized expertise and can perform actions:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode) in [Visual Studio Code](https://code.visualstudio.com/docs/editor/artificial-intelligence).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/getting-started-with-github-copilot?tool=vscode": {
+                "$mid": 1,
+                "path": "/copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode"
+              },
+              "https://code.visualstudio.com/docs/editor/artificial-intelligence": {
+                "$mid": 1,
+                "path": "/docs/editor/artificial-intelligence",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              }
+            }
+          },
+          "supportIssueReporting": false
+        },
+        "name": "copilot",
+        "extensionPublisherId": "",
+        "extensionDisplayName": "",
+        "extensionId": {
+          "value": "",
+          "_lower": ""
+        }
+      },
+      "contentReferences": [],
+      "codeCitations": []
+    }
+  ]
+}

@@ -1,0 +1,2837 @@
+{
+  "requesterUsername": "chefgs",
+  "requesterAvatarIconUri": {
+    "$mid": 1,
+    "path": "/u/7605658",
+    "scheme": "https",
+    "authority": "avatars.githubusercontent.com",
+    "query": "v=4"
+  },
+  "responderUsername": "GitHub Copilot",
+  "responderAvatarIconUri": {
+    "id": "copilot"
+  },
+  "initialLocation": "panel",
+  "welcomeMessage": [
+    "Welcome, **@chefgs**, I'm your Copilot and I'm here to help you get things done faster. You can also [start an inline chat session](command:workbench.action.quickchat.launchInlineChat).",
+    "I'm powered by AI, so surprises and mistakes are possible. Make sure to verify any generated code or suggestions, and [share feedback](https://aka.ms/microsoft/vscode-copilot-release) so that we can learn and improve. Check out the [Copilot documentation](https://code.visualstudio.com/docs/copilot/getting-started-chat) to learn more."
+  ],
+  "requests": [
+    {
+      "message": {
+        "text": "how to get output.plan_id in this step",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 38
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 39
+            },
+            "text": "how to get output.plan_id in this step",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [],
+      "result": {
+        "timings": {
+          "totalElapsed": 3055
+        },
+        "metadata": {
+          "inlineChatSession": "6ce0067b-ba56-4a64-8d8c-9fd076d4543b"
+        }
+      },
+      "followups": [],
+      "isCanceled": false,
+      "contentReferences": [],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "how to get outputs.plan_id in this step",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 39
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 40
+            },
+            "text": "how to get outputs.plan_id in this step",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "To get `outputs.plan_id` in the given GitHub Actions workflow step, you need to ensure that the `terraform plan` command generates an output that includes a plan ID, and then you must set this plan ID as an output of the step where `terraform plan` is executed. However, the standard `terraform plan` command does not generate a plan ID directly usable in this manner. Instead, you use `terraform plan -out=tfplan` to save the plan to a file. To pass a plan ID or similar identifier to later steps, you would typically need to use a custom script or command to extract or generate the identifier, then use `echo \"::set-output name=plan_id::<value>\"` to set it as an output.\n\nGiven the provided YAML, it seems there's a misunderstanding in how `plan_id` is expected to be used or generated. If your intention is to pass the plan file (`tfplan`) or an identifier for it to subsequent steps, you'll need to adjust the script in the `Terraform Plan` step to explicitly set an output.\n\nHere's a revised approach assuming you want to pass the filename or a generated identifier as `plan_id`:\n\n```yaml\n- name: Terraform Plan\n  id: plan\n  run: |\n    echo \"** Running Terraform Plan**\"\n    terraform plan -out=tfplan\n    # Assuming you want to use the filename as the plan_id\n    echo \"::set-output name=plan_id::tfplan\"\n  working-directory: ${{ env.tfcode_path }}\n\n- name: Use Plan Output\n  uses: hashicorp/tfc-workflows-github/actions/plan-output@v1.3.0\n  id: plan-output\n  with:\n    plan: ${{ steps.plan.outputs.plan_id }}\n```\n\nIn this example, `::set-output name=plan_id::tfplan` sets the output `plan_id` to the string `tfplan`, which can then be used in subsequent steps as shown. If you need a more complex identifier or need to extract information from the `tfplan` file, you would need to insert the appropriate commands to do so before setting the output.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 1349,
+          "totalElapsed": 12605
+        },
+        "metadata": {
+          "modelMessageId": "077d81a4-6db3-4594-bfd5-99ec51601d35",
+          "responseId": "16e892bf-751e-4460-9812-10e9ae4f8611",
+          "sessionId": "70bac323-53e1-4d11-8f70-6ac614e91bee",
+          "agentId": "github.copilot.default"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.default",
+          "message": "How can I pass the plan ID generated by `terraform plan` to subsequent steps in a GitHub Actions workflow?"
+        }
+      ],
+      "isCanceled": false,
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "external": "file:///Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "path": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 49,
+              "startColumn": 1,
+              "endLineNumber": 61,
+              "endColumn": 48
+            }
+          }
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "how to get the tfplan id of the terraform plan command",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 54
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 55
+            },
+            "text": "how to get the tfplan id of the terraform plan command",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "To get the `tfplan` ID or a reference to the Terraform plan (`tfplan`) in a GitHub Actions workflow, you typically need to work with Terraform Cloud or Terraform Enterprise, where plans are executed remotely, and an ID is generated for each plan. However, in a local context (like in the provided GitHub Actions workflow), Terraform does not generate a unique plan ID as part of its output when you run `terraform plan -out=tfplan`. Instead, it generates a file named `tfplan`.\n\nIf you're looking to pass the `tfplan` file or its content to another step or job in your GitHub Actions workflow, you won't be able to directly use a plan ID like you would with Terraform Cloud. Instead, you can pass the filename or use artifacts to share the plan file between jobs.\n\nGiven the context of your question, if you're looking to work with the plan file (`tfplan`) in subsequent steps of your GitHub Actions workflow, here's how you can adjust your workflow to ensure the `tfplan` file is accessible and used correctly:\n\n1. **Ensure `tfplan` is available for subsequent steps**: Since you're generating a plan file named `tfplan`, you'll need to ensure this file is accessible to other steps or jobs. If it's within the same job, you can reference the file directly by its path.\n\n2. **Set an output (if needed)**: If you want to explicitly mark the presence of the plan or its path as an output for clarity or conditional logic, you can do so by using the `echo \"::set-output name=plan_path::tfplan\"` command. However, this is optional and more for workflow readability or conditional execution in later steps.\n\nHere's how you might adjust your workflow step to include setting an output for the plan file path, which seems to be what you're aiming for:\n\n```yaml\n- name: Terraform Plan\n  id: plan\n  run: |\n    echo \"** Running Terraform Plan**\"\n    terraform plan -out=tfplan\n    echo \"::set-output name=plan_path::${{ github.workspace }}/${{ env.tfcode_path }}/tfplan\"\n  working-directory: ${{ env.tfcode_path }}\n\n- name: Use Plan Output\n  uses: hashicorp/tfc-workflows-github/actions/plan-output@v1.3.0\n  id: plan-output\n  with:\n    plan: ${{ steps.plan.outputs.plan_path }}\n```\n\nIn this adjusted example, `plan_path` is set as an output containing the path to the `tfplan` file. This assumes subsequent steps or actions can work with the plan file directly by its path. If you're working with Terraform Cloud or a similar service that generates a plan ID, you would need to use the service's CLI or API to retrieve the plan ID and then use `echo \"::set-output name=plan_id::<value>\"` to set it as an output in your GitHub Actions workflow.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 2308,
+          "totalElapsed": 21483
+        },
+        "metadata": {
+          "modelMessageId": "81dd9ea5-5a66-4ec5-b1ca-f478d2bb04c9",
+          "responseId": "a460b0b4-c2aa-4fe0-be06-e23f2a6b9f75",
+          "sessionId": "70bac323-53e1-4d11-8f70-6ac614e91bee",
+          "agentId": "github.copilot.default"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.default",
+          "message": "How can I pass the `tfplan` file path to a subsequent step in my GitHub Actions workflow?"
+        }
+      ],
+      "isCanceled": false,
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "external": "file:///Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "path": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 49,
+              "startColumn": 1,
+              "endLineNumber": 61,
+              "endColumn": 48
+            }
+          }
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "Explain with the context that we are working with terraform cloud and how the plan_id can be used in the actions workflow",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 121
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 122
+            },
+            "text": "Explain with the context that we are working with terraform cloud and how the plan_id can be used in the actions workflow",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "When working with Terraform Cloud in a GitHub Actions workflow, the process for generating and using a Terraform plan differs from local execution. Terraform Cloud executes plans remotely, and each plan is associated with a unique ID that can be used to reference the plan in subsequent operations, such as applying the plan. This ID is crucial when integrating Terraform Cloud with GitHub Actions, as it allows you to pass the plan between steps in your workflow.\n\nGiven the context of using Terraform Cloud, here's how you can adjust the provided GitHub Actions workflow snippet to work with Terraform Cloud and utilize the `plan_id`:\n\n1. **Terraform Plan Step**: When you run `terraform plan` with Terraform Cloud, the command is executed in the context of a Terraform Cloud workspace, and the plan itself is stored remotely. To retrieve the plan ID, you would typically use the Terraform Cloud API or the Terraform CLI configured to work with Terraform Cloud. However, directly in GitHub Actions, you don't get the plan ID from `terraform plan -out=tfplan` command. Instead, you would use `terraform plan` and then use Terraform Cloud's API or CLI commands to extract the plan ID.\n\n2. **Set the Plan ID as an Output**: After generating the plan in Terraform Cloud, you need to set the plan ID as an output of the step. This usually involves using Terraform Cloud's API to get the plan ID based on the workspace and run details, then using GitHub Actions syntax to set this ID as an output variable.\n\n3. **Use the Plan ID in Subsequent Steps**: Once you have the plan ID as an output variable, you can use it in subsequent steps of your GitHub Actions workflow, such as applying the plan or performing other actions that require referencing the plan.\n\nHere's a conceptual example of how you might adjust your workflow to work with Terraform Cloud:\n\n```yaml\n- name: Terraform Plan\n  id: plan\n  run: |\n    echo \"** Running Terraform Plan**\"\n    # Assuming you have pre-configured Terraform CLI to work with Terraform Cloud\n    terraform plan\n    # Use Terraform Cloud API or CLI to retrieve the plan ID and set it as an output\n    PLAN_ID=$(retrieve-plan-id-command) # This is a placeholder for the actual command to retrieve the plan ID\n    echo \"::set-output name=plan_id::$PLAN_ID\"\n  working-directory: ${{ env.tfcode_path }}\n\n- name: Use Plan Output\n  uses: hashicorp/tfc-workflows-github/actions/plan-output@v1.3.0\n  id: plan-output\n  with:\n    plan: ${{ steps.plan.outputs.plan_id }}\n```\n\nIn this example, `retrieve-plan-id-command` is a placeholder for the actual command or series of commands needed to retrieve the plan ID from Terraform Cloud. This could involve using `terraform show`, `terraform state show`, or directly interacting with the Terraform Cloud API, depending on your specific setup and requirements.\n\nNote: The exact method to retrieve the plan ID will depend on how you've configured Terraform Cloud and the specifics of your workflow. Terraform Cloud's API documentation and the Terraform CLI documentation provide more details on interacting with plans and workspaces.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 1896,
+          "totalElapsed": 24100
+        },
+        "metadata": {
+          "modelMessageId": "336986f1-cf3a-4a98-a833-0d28534ff5b2",
+          "responseId": "17d586a6-102d-439b-8181-b837a9285b24",
+          "sessionId": "70bac323-53e1-4d11-8f70-6ac614e91bee",
+          "agentId": "github.copilot.default"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.default",
+          "message": "How can I retrieve the plan ID from Terraform Cloud using the Terraform CLI?"
+        }
+      ],
+      "isCanceled": false,
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "external": "file:///Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "path": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 49,
+              "startColumn": 1,
+              "endLineNumber": 61,
+              "endColumn": 48
+            }
+          }
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "How to declare outputs of the specific github action workflow",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 61
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 62
+            },
+            "text": "How to declare outputs of the specific github action workflow",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "To declare outputs for a specific GitHub Actions workflow step, you use the `::set-output name=<output_name>::<value>` syntax in a run script. This allows you to set outputs that can be used by subsequent steps within the same job. However, to pass outputs between jobs, you need to use job outputs and reference them accordingly.\n\nGiven the active selection from the file [`tf_cloud_aws.yml`](command:_github.copilot.openRelativePath?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_cloud_aws.yml%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%5D \"/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml\"), it appears you want to set an output for the `Terraform Plan` step but the mechanism to do so is not implemented in the provided code snippet. Assuming you want to capture some output from the `terraform plan` command or a subsequent command and use it in the `plan-output` step, you'll need to add a command to set this output explicitly.\n\nHere's how you can modify the `Terraform Plan` step to include setting an output. This example assumes you want to capture the filename `tfplan` as an output, but you can adjust the value to whatever is relevant for your workflow (e.g., capturing the output of a command or a generated ID):\n\n```yaml\n- name: Terraform Plan\n  id: plan\n  run: |\n    echo \"** Running Terraform Plan**\"\n    terraform plan -out=tfplan\n    # Assuming you want to use the tfplan file path or a placeholder value as the output\n    echo \"::set-output name=plan_id::tfplan\"\n  working-directory: ${{ env.tfcode_path }}\n```\n\nIn the subsequent step, you're already correctly using the output with `plan: ${{ steps.plan.outputs.plan_id }}`. This means that the `plan-output` step will receive whatever value is set as `plan_id` in the `Terraform Plan` step.\n\nRemember, the value you set as the output in the `Terraform Plan` step needs to be meaningful for your subsequent steps. If you're working with Terraform Cloud and need to pass an actual plan ID or another specific value, you'll need to capture that value from Terraform Cloud's output or API and use it in the `echo \"::set-output name=plan_id::<value>\"` command.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 2395,
+          "totalElapsed": 17774
+        },
+        "metadata": {
+          "modelMessageId": "90132e0b-c98b-41cd-856b-c95f2f9803a1",
+          "responseId": "776107b6-a055-469d-86d0-4c8285b6689f",
+          "sessionId": "70bac323-53e1-4d11-8f70-6ac614e91bee",
+          "agentId": "github.copilot.default"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.default",
+          "message": "How can I access the output values of a Terraform Cloud run in a GitHub Actions workflow?"
+        }
+      ],
+      "isCanceled": false,
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "external": "file:///Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "path": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 49,
+              "startColumn": 1,
+              "endLineNumber": 61,
+              "endColumn": 48
+            }
+          }
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "how to write tfplan as json",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 27
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 28
+            },
+            "text": "how to write tfplan as json",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "To write a Terraform plan (`tfplan`) as JSON, you can use the `terraform show` command with the `-json` option. This command is used to provide a human-readable output of a Terraform plan file, and with the `-json` option, it outputs the plan in a machine-readable JSON format. Here's how you can do it step-by-step:\n\n1. **Generate the Terraform Plan File**: First, you need to generate a Terraform plan file using the `terraform plan -out=tfplan` command. This command saves the execution plan to a file named `tfplan`.\n\n2. **Convert the Plan to JSON**: Next, use the `terraform show -json tfplan` command to convert the saved plan file into JSON format. This command reads the `tfplan` file and outputs its content in JSON.\n\n3. **Save the JSON Output to a File**: You can redirect the output of the `terraform show -json` command to a file. For example, `terraform show -json tfplan > plan.json` will save the JSON output to a file named `plan.json`.\n\nHere's how you can combine these steps in a script or a command line:\n\n```bash\n# Step 1: Generate the Terraform plan file\nterraform plan -out=tfplan\n\n# Step 2 and 3: Convert the plan to JSON and save it to a file\nterraform show -json tfplan > plan.json\n```\n\nThis process will give you a JSON representation of your Terraform plan, which can be useful for automated parsing, inspection, or integration with other tools.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 2942,
+          "totalElapsed": 14465
+        },
+        "metadata": {
+          "modelMessageId": "cde35add-adfc-47f3-b528-e9fa0d829664",
+          "responseId": "8d7cd7c4-89e5-4ac2-bf97-66d4554a352d",
+          "sessionId": "70bac323-53e1-4d11-8f70-6ac614e91bee",
+          "agentId": "github.copilot.default"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.default",
+          "message": "How can I use the JSON representation of a Terraform plan in my workflow?"
+        }
+      ],
+      "isCanceled": false,
+      "contentReferences": [],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "what is the api command for getting tf cloud terraform plan id",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 62
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 63
+            },
+            "text": "what is the api command for getting tf cloud terraform plan id",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "To get a Terraform plan ID from Terraform Cloud via the API, you would typically interact with the Terraform Cloud API's Runs endpoint. A \"run\" in Terraform Cloud represents a single plan and apply cycle, and each run has a unique ID. The plan itself is a part of a run, and you can extract the plan ID from the details of a run.\n\nHere's a step-by-step guide on how to get the Terraform plan ID using Terraform Cloud's API:\n\n1. **Start a new run or get an existing run**: You need the ID of a run to retrieve its details, including the plan ID. If you're starting a new run, you'll use the Runs API to create it and get the run ID in response. If you're retrieving an existing run, you'll need its ID.\n\n2. **Retrieve the run details**: Once you have a run ID, you can make a GET request to the Runs API to retrieve its details, including the plan ID.\n\nHere's an example of how to make a request to get the details of a run, including the plan ID, using `curl`. Replace `YOUR_RUN_ID` with your actual run ID and `YOUR_TERRAFORM_CLOUD_TOKEN` with your Terraform Cloud API token:\n\n```bash\n",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        },
+        {
+          "kind": "markdownVuln",
+          "content": {
+            "value": "curl",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {}
+          },
+          "vulnerabilities": [
+            {
+              "title": "hardcoded-credentials",
+              "description": "Embedding credentials in source code risks unauthorized access"
+            }
+          ]
+        },
+        {
+          "value": " \\\n  --header \"Authorization: Bearer YOUR_TERRAFORM_CLOUD_TOKEN\" \\\n  --header \"Content-Type: application/vnd.api+json\" \\\n  https://app.terraform.io/api/v2/runs/YOUR_RUN_ID\n```\n\nThis request will return a JSON response that includes various details about the run. The plan ID can be found within this JSON response, typically under the `relationships` -> `plan` -> `data` -> `id` path.\n\nPlease note, the exact structure of the response and the steps to extract the plan ID may vary based on the version of the Terraform Cloud API and the specifics of your Terraform setup. Always refer to the [official Terraform Cloud API documentation](https://www.terraform.io/cloud-docs/api-docs) for the most accurate and up-to-date information.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 2001,
+          "totalElapsed": 17415
+        },
+        "metadata": {
+          "modelMessageId": "ce6f8003-af97-4b99-bc00-67e4730754d2",
+          "responseId": "650bc9ac-4dc9-43bd-863d-3363664f5d5b",
+          "sessionId": "70bac323-53e1-4d11-8f70-6ac614e91bee",
+          "agentId": "github.copilot.default"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.default",
+          "message": "How can I use the Terraform plan ID obtained from Terraform Cloud in a subsequent step of my GitHub Actions workflow?"
+        }
+      ],
+      "isCanceled": false,
+      "contentReferences": [],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "what are the syntax for using workflow dispatch",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 47
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 48
+            },
+            "text": "what are the syntax for using workflow dispatch",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "To use the `workflow_dispatch` event in a GitHub Actions workflow, allowing you to manually trigger the workflow from GitHub's UI or via the GitHub API, you need to add it to the `on` section of your workflow file. Here's the basic syntax:\n\n```yaml\non:\n  workflow_dispatch:\n```\n\nThis basic setup enables the manual trigger feature for the workflow without any inputs. However, you can also define inputs for the workflow, which allows you to provide data when triggering the workflow manually. Here's an example with inputs:\n\n```yaml\non:\n  workflow_dispatch:\n    inputs:\n      logLevel:\n        description: 'Log level'\n        required: true\n        default: 'warning'\n      environment:\n        description: 'Environment name'\n        required: true\n```\n\nIn this example, two inputs are defined: `logLevel` and `environment`. Each input can have a `description`, a `required` flag indicating whether the input must be provided to trigger the workflow, and a `default` value.\n\nWhen this workflow is triggered, either through the GitHub UI or the API, you can specify values for these inputs, which can then be used in the workflow steps using the `github.event.inputs` context. For example:\n\n```yaml\njobs:\n  example:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Print inputs\n        run: |\n          echo \"Log Level: ${{ github.event.inputs.logLevel }}\"\n          echo \"Environment: ${{ github.event.inputs.environment }}\"\n```\n\nThis setup allows for flexible and dynamic workflow executions based on user-provided input at the time of triggering the workflow.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 1829,
+          "totalElapsed": 13702
+        },
+        "metadata": {
+          "modelMessageId": "eab7d501-77ec-4ba0-b120-002cfb00911a",
+          "responseId": "3f91b5bd-978f-4568-b072-8c5ccb0c6a0d",
+          "sessionId": "70bac323-53e1-4d11-8f70-6ac614e91bee",
+          "agentId": "github.copilot.default"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.default",
+          "message": "How can I trigger a GitHub Actions workflow manually using the workflow_dispatch event and pass inputs to it?"
+        }
+      ],
+      "isCanceled": false,
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "external": "file:///Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "path": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 15,
+              "startColumn": 3,
+              "endLineNumber": 15,
+              "endColumn": 19
+            }
+          }
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "how to use workflow dispatch on specific branch",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 47
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 48
+            },
+            "text": "how to use workflow dispatch on specific branch",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "To use the `workflow_dispatch` event to trigger a GitHub Actions workflow on a specific branch, you specify the branch or branches you want the workflow to run on under the `jobs.<job_id>.runs-on` field for job execution environment, and use the `ref` input under `workflow_dispatch` to specify the branch you want to trigger the workflow on. However, it's important to note that the `workflow_dispatch` event itself does not restrict which branch the workflow is triggered on; instead, it allows you to manually trigger the workflow from GitHub's UI or via the GitHub API. The branch restriction is applied at the job level within the workflow.\n\nHere's how you can set up a workflow with `workflow_dispatch` that is intended to run on a specific branch when manually triggered:\n\n```yaml\nname: Manual Workflow Dispatch Example\n\non:\n  workflow_dispatch:\n    inputs:\n      target_branch:\n        description: 'Branch to run the workflow on'\n        required: true\n        default: 'main' # Default branch\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n    - uses: actions/checkout@v2\n      with:\n        ref: ${{ github.event.inputs.target_branch }}\n    - name: Run a script\n      run: |\n        echo \"Workflow running on branch ${{ github.event.inputs.target_branch }}\"\n```\n\nIn this example, when you trigger the workflow manually, you can specify the branch you want to run the workflow on by setting the `target_branch` input. The workflow will check out the repository at the specified branch using the `actions/checkout@v2` action with the `ref` input set to the branch name provided by the user.\n\nThis approach provides flexibility in specifying the branch at the time of triggering the workflow. Remember, the actual execution of jobs and steps is not restricted by the branch unless you explicitly configure it to be so, as shown in the example.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 1926,
+          "totalElapsed": 17081
+        },
+        "metadata": {
+          "modelMessageId": "91933bb4-2c6c-4964-94a1-8615546c68ab",
+          "responseId": "d8dcf43e-f287-4540-8456-ca2fef9e71b0",
+          "sessionId": "70bac323-53e1-4d11-8f70-6ac614e91bee",
+          "agentId": "github.copilot.default"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.default",
+          "message": "How can I trigger a GitHub Actions workflow using a specific input value?"
+        }
+      ],
+      "isCanceled": false,
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "external": "file:///Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "path": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 15,
+              "startColumn": 3,
+              "endLineNumber": 15,
+              "endColumn": 19
+            }
+          }
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "what is the best practice for running terraform using \"on\" keyword. Which branch needs to be triggered automated, and which branch needs manual trigger",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 151
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 152
+            },
+            "text": "what is the best practice for running terraform using \"on\" keyword. Which branch needs to be triggered automated, and which branch needs manual trigger",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "When using Terraform in a CI/CD pipeline with GitHub Actions, best practices for triggering workflows with the `on` keyword depend on your development workflow, branching strategy, and how you manage your infrastructure changes. Here's a general approach that aligns with common practices:\n\n### Main or Production Branch (Automated Trigger)\n- **Branch**: Typically, `main` or `production`.\n- **Trigger**: Automated triggers are used for this branch to apply changes to production infrastructure or a staging environment that mirrors production closely. This ensures that changes are automatically deployed once they are fully vetted and merged into the main branch.\n- **Workflow Event**: `push` or `pull_request` for continuous integration, ensuring that changes are tested before they are merged.\n\n```yaml\non:\n  push:\n    branches:\n      - main\n  pull_request:\n    branches:\n      - main\n```\n\n### Development or Feature Branches (Manual Trigger)\n- **Branch**: Development, feature, or any non-production branches.\n- **Trigger**: Manual triggers are useful here to allow developers or operations teams to plan and apply Terraform changes in a controlled manner, ensuring that changes can be reviewed and applied when necessary without automatically affecting live infrastructure.\n- **Workflow Event**: `workflow_dispatch` allows for manual execution, providing flexibility to run Terraform plans and applies on demand.\n\n```yaml\non:\n  workflow_dispatch:\n    branches:\n      - develop\n      - feature/**\n```\n\n### Combining Both Approaches\nIn practice, you might combine both automated and manual triggers in your GitHub Actions workflow to accommodate different stages of your development and deployment pipeline.\n\n```yaml\non:\n  push:\n    branches:\n      - main\n  pull_request:\n    branches:\n      - main\n  workflow_dispatch:\n    branches:\n      - develop\n      - feature/**\n```\n\n### Best Practices Summary:\n- **Automate Testing and Deployment to Main/Production**: Automate as much of the testing and deployment process as possible for your main or production branch to streamline your workflow and reduce human error.\n- **Use Manual Triggers for Development and Features**: Utilize manual triggers for development and feature branches to provide control over when and how changes are applied, allowing for detailed review and planning.\n- **Branch Protection Rules**: Implement branch protection rules for your main or production branch to require pull request reviews, status checks, and more before merging.\n- **Terraform State Management**: Ensure your Terraform state is securely managed and backed up. Consider using Terraform Cloud or a similar service for state management, especially when working in a team environment.\n- **Review and Approval Process**: Incorporate a review and approval process for infrastructure changes, especially for those affecting production environments.\n\nAdapting these practices to fit your team's workflow and the specifics of your infrastructure will help maintain a balance between agility and stability in your infrastructure management process.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 3276,
+          "totalElapsed": 26066
+        },
+        "metadata": {
+          "modelMessageId": "f3c6c05e-bf68-4127-a67a-78962334bc0c",
+          "responseId": "0a9891af-2f3c-4ba2-ab5f-81825e229238",
+          "sessionId": "70bac323-53e1-4d11-8f70-6ac614e91bee",
+          "agentId": "github.copilot.default"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.default",
+          "message": "What are some best practices for managing Terraform state in a team environment?"
+        }
+      ],
+      "isCanceled": false,
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "external": "file:///Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "path": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 15,
+              "startColumn": 3,
+              "endLineNumber": 15,
+              "endColumn": 19
+            }
+          }
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "how do I change the backend if I am running this GitHub Actions workflow for nonprod versus prod?",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 97
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 98
+            },
+            "text": "how do I change the backend if I am running this GitHub Actions workflow for nonprod versus prod?",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "To change the Terraform backend configuration based on whether you are running a GitHub Actions workflow for a non-production or production environment, you can use environment variables and conditional logic within your workflow. This approach allows you to dynamically set backend configurations based on the context of the workflow run.\n\nHere's a step-by-step guide on how to achieve this:\n\n1. **Define Environment Variables**: Use GitHub Actions secrets to store environment-specific backend configurations. For example, you might have `TF_BACKEND_CONFIG_NONPROD` and `TF_BACKEND_CONFIG_PROD` as secrets containing the backend configuration details for non-production and production environments, respectively.\n\n2. **Modify the Workflow to Use Conditional Logic**: In your workflow, use conditional logic to set the backend configuration based on the trigger or inputs to the workflow. You can use the `workflow_dispatch` event to manually trigger workflows and include an input that specifies the environment.\n\n3. **Use a Script to Configure the Backend**: Before running Terraform commands, use a script step to dynamically generate the backend configuration file based on the specified environment.\n\nHere's an example GitHub Actions workflow that demonstrates this approach:\n\n```yaml\nname: Terraform Deploy\n\non:\n  workflow_dispatch:\n    inputs:\n      environment:\n        description: 'Deployment environment (prod or nonprod)'\n        required: true\n        default: 'nonprod'\n\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n    - name: Checkout code\n      uses: actions/checkout@v2\n\n    - name: Setup Terraform\n      uses: hashicorp/setup-terraform@v1\n\n    - name: Configure Backend\n      run: |\n        if [ \"${{ github.event.inputs.environment }}\" = \"prod\" ]; then\n          echo \"${{ secrets.TF_BACKEND_CONFIG_PROD }}\" > backend.tfvars\n        else\n          echo \"${{ secrets.TF_BACKEND_CONFIG_NONPROD }}\" > backend.tfvars\n        fi\n\n    - name: Terraform Init\n      run: terraform init -backend-config=backend.tfvars\n\n    - name: Terraform Apply\n      run: terraform apply -auto-approve\n```\n\nIn this example:\n- The workflow is manually triggered with an `environment` input to specify the target environment (`prod` or `nonprod`).\n- The \"Configure Backend\" step dynamically creates a `backend.tfvars` file with the backend configuration based on the specified environment. This configuration is pulled from the GitHub Actions secrets.\n- Terraform commands use the generated `backend.tfvars` for initializing and applying configurations.\n\n**Important**: Ensure that your backend configurations stored in GitHub Secrets are secure and have limited access. This approach allows you to maintain different backend configurations for different environments without hardcoding sensitive information in your workflow files.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 4072,
+          "totalElapsed": 24554
+        },
+        "metadata": {
+          "modelMessageId": "d1cdcb87-9b22-42cd-993f-c4f3055b1f02",
+          "responseId": "c37c47ea-70db-4c70-b51d-b838eae05dac",
+          "sessionId": "70bac323-53e1-4d11-8f70-6ac614e91bee",
+          "agentId": "github.copilot.default"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.default",
+          "message": "How can I pass variables to a GitHub Actions workflow triggered by the `workflow_dispatch` event?"
+        }
+      ],
+      "isCanceled": false,
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "external": "file:///Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "path": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 15,
+              "startColumn": 3,
+              "endLineNumber": 15,
+              "endColumn": 19
+            }
+          }
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "how to configure backend in tfc workspace",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 41
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 42
+            },
+            "text": "how to configure backend in tfc workspace",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "To configure the backend for a Terraform Cloud (TFC) workspace, you typically use the Terraform configuration files to specify the backend details. Terraform Cloud acts as the backend, and you need to configure your Terraform files to use the `remote` backend, pointing to your TFC workspace. Here's how you can do it step-by-step:\n\n### Step 1: Define the Terraform Backend\n\nIn your Terraform configuration (`main.tf` or another `.tf` file), define the `backend` block to use Terraform Cloud. You'll specify the organization name and the workspace name. Replace `your_organization` and `your_workspace` with your actual Terraform Cloud organization and workspace names.\n\n```hcl\nterraform {\n  backend \"remote\" {\n    organization = \"your_organization\"\n\n    workspaces {\n      name = \"your_workspace\"\n    }\n  }\n}\n```\n\n### Step 2: Initialize Terraform\n\nRun `terraform init` to initialize the Terraform configuration. This command will set up the Terraform Cloud backend, among other things. Make sure you have Terraform CLI installed and you are logged into Terraform Cloud via the CLI.\n\n```bash\nterraform init\n```\n\n### Step 3: Authenticate with Terraform Cloud\n\nEnsure you're authenticated with Terraform Cloud. If you're using the Terraform CLI, you can log in to Terraform Cloud using the following command:\n\n```bash\nterraform login\n```\n\nThis command generates a token and stores it locally, allowing Terraform commands to interact with your Terraform Cloud workspace.\n\n### Step 4: Configure Workspace Variables in Terraform Cloud\n\nTerraform Cloud workspaces support setting variables that can be used within your Terraform configuration. You can set these variables in the TFC UI under your workspace settings:\n\n- **Terraform Variables**: Used for variables within your Terraform configuration.\n- **Environment Variables**: Used for setting environment variables that Terraform or provider plugins will use.\n\n### Step 5: Plan and Apply\n\nWith the backend configured, you can now use Terraform as usual to plan and apply your configurations. Terraform Cloud will automatically store your state and run plans and applies according to the settings in your workspace.\n\n```bash\nterraform plan\nterraform apply\n```\n\n### Additional Tips\n\n- **Workspaces for Different Environments**: Consider using separate workspaces for different environments (e.g., production, staging). This approach isolates state and variables for each environment.\n- **Version Control Integration**: Terraform Cloud can integrate with your VCS (e.g., GitHub, GitLab). This allows for automatic triggering of Terraform plans and applies based on code changes.\n- **Review Terraform Cloud Documentation**: Terraform Cloud offers many features like remote operations, team access controls, and more. Review the [official documentation](https://www.terraform.io/cloud-docs) for detailed guidance on leveraging these features.\n\nBy following these steps, you can configure and use a Terraform Cloud workspace as the backend for your Terraform configurations, leveraging TFC's capabilities for state management, collaboration, and automation.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 5522,
+          "totalElapsed": 26436
+        },
+        "metadata": {
+          "modelMessageId": "29d89468-8629-4550-ae26-4b16b4c12efe",
+          "responseId": "4cd9c563-2ec8-4d8f-9019-2998ef7e0af4",
+          "sessionId": "70bac323-53e1-4d11-8f70-6ac614e91bee",
+          "agentId": "github.copilot.default"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.default",
+          "message": "How can I configure Terraform Cloud to use a specific backend for my Terraform configurations?"
+        }
+      ],
+      "isCanceled": false,
+      "vote": 1,
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "external": "file:///Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "path": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 15,
+              "startColumn": 3,
+              "endLineNumber": 15,
+              "endColumn": 19
+            }
+          }
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "@workspace /explain Explain each sections of the workflow in detail.",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 10
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 11
+            },
+            "agent": {
+              "extensionId": {
+                "value": "GitHub.copilot-chat",
+                "_lower": "github.copilot-chat"
+              },
+              "publisherDisplayName": "GitHub",
+              "extensionPublisherId": "GitHub",
+              "extensionDisplayName": "GitHub Copilot Chat",
+              "id": "github.copilot.workspace",
+              "description": "Ask about your workspace",
+              "metadata": {
+                "sampleRequest": "How do I build this project?",
+                "themeIcon": {
+                  "id": "code"
+                },
+                "hasFollowups": true,
+                "isSecondary": true,
+                "supportIssueReporting": false
+              },
+              "name": "workspace",
+              "fullName": "Workspace",
+              "locations": [
+                "panel"
+              ],
+              "slashCommands": [
+                {
+                  "name": "explain",
+                  "description": "Explain how the code in your active editor works"
+                },
+                {
+                  "name": "tests",
+                  "description": "Generate unit tests for the selected code"
+                },
+                {
+                  "name": "fix",
+                  "description": "Propose a fix for the problems in the selected code",
+                  "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+                },
+                {
+                  "name": "new",
+                  "description": "Scaffold code for a new workspace",
+                  "sampleRequest": "Create a RESTful API server using typescript",
+                  "isSticky": true
+                },
+                {
+                  "name": "newNotebook",
+                  "description": "Create a new Jupyter Notebook",
+                  "sampleRequest": "How do I create a notebook to load data from a csv file?"
+                }
+              ]
+            },
+            "kind": "agent"
+          },
+          {
+            "range": {
+              "start": 10,
+              "endExclusive": 11
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 11,
+              "endLineNumber": 1,
+              "endColumn": 12
+            },
+            "text": " ",
+            "kind": "text"
+          },
+          {
+            "range": {
+              "start": 11,
+              "endExclusive": 19
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 12,
+              "endLineNumber": 1,
+              "endColumn": 20
+            },
+            "command": {
+              "name": "explain",
+              "description": "Explain how the code in your active editor works"
+            },
+            "kind": "subcommand"
+          },
+          {
+            "range": {
+              "start": 19,
+              "endExclusive": 68
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 20,
+              "endLineNumber": 1,
+              "endColumn": 69
+            },
+            "text": " Explain each sections of the workflow in detail.",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Given the context of a `tf_cloud_aws.yml` file, it sounds like you're referring to a GitHub Actions workflow designed for deploying Terraform configurations to AWS (Amazon Web Services). While I don't have the specific content of your file due to the selection issue, I can explain the typical sections you might find in such a workflow file.\n\n### Name\n\n```yaml\nname: Deploy Terraform to AWS\n```\n\nThis section defines the name of the workflow. It's a label that helps you identify the workflow among others in your GitHub repository.\n\n### On\n\n```yaml\non:\n  push:\n    branches:\n      - main\n  pull_request:\n    branches:\n      - main\n```\n\nThe `on` section specifies the events that trigger the workflow. In this example, the workflow runs when there are push events or pull requests made to the `main` branch.\n\n### Jobs\n\n```yaml\njobs:\n  terraform:\n    runs-on: ubuntu-latest\n    steps:\n    - uses: actions/checkout@v2\n    - name: Setup Terraform\n      uses: hashicorp/setup-terraform@v1\n      with:\n        terraform_version: 0.14.9\n```\n\nThe `jobs` section defines a collection of jobs that the workflow will execute. Each job runs independently on a runner specified by `runs-on`. In this example, there's a single job named `terraform` that runs on the latest Ubuntu runner. The steps within a job are:\n\n1. **Checkout**: Uses the `actions/checkout@v2` action to check out your repository under `$GITHUB_WORKSPACE`, so your workflow can access it.\n2. **Setup Terraform**: Uses the `hashicorp/setup-terraform@v1` action to install a specific version of Terraform (`0.14.9` in this case).\n\n### Steps\n\nWithin each job, you define a series of `steps`. Steps can run commands, use actions created by the community, or execute custom actions. Each step in a job executes in order, allowing you to build a sequence of operations for your CI/CD pipeline.\n\n### Actions\n\nActions are standalone commands that are combined into steps to create a job. Actions are reusable units of code that can be shared within a single workflow or across multiple workflows. In the example above, `actions/checkout@v2` and `hashicorp/setup-terraform@v1` are both actions used in the workflow.\n\n### With\n\n```yaml\nwith:\n  terraform_version: 0.14.9\n```\n\nThe `with` keyword is used to pass inputs to an action. In the example, it specifies the version of Terraform to install.\n\n### Environment Variables and Secrets\n\nYou might also encounter sections for defining environment variables or using secrets to securely pass sensitive information (like AWS credentials) to your workflow. These aren't shown in the example above but are common in workflows that interact with cloud services.\n\n```yaml\nenv:\n  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}\n  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}\n```\n\nThis snippet demonstrates how to set environment variables using secrets stored in GitHub. It's crucial for keeping sensitive information like AWS credentials secure.\n\n### Conclusion\n\nThis breakdown covers the typical sections you might find in a GitHub Actions workflow file for deploying Terraform configurations to AWS. Each section plays a crucial role in defining when the workflow runs, what jobs it contains, and how those jobs are executed.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 4855,
+          "totalElapsed": 23084
+        },
+        "metadata": {
+          "modelMessageId": "9905aad8-52ff-4665-8a36-ac3ea1ba47fa",
+          "responseId": "de12038d-79e0-47b8-bc3f-de90427fd28f",
+          "sessionId": "1525ad91-45c0-4d33-b908-e1dc56aba20d",
+          "agentId": "github.copilot.workspace",
+          "command": "explain"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.workspace",
+          "subCommand": "explain",
+          "message": "What are some common actions used in GitHub Actions workflows for deploying applications?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "publisherDisplayName": "GitHub",
+        "extensionPublisherId": "GitHub",
+        "extensionDisplayName": "GitHub Copilot Chat",
+        "id": "github.copilot.workspace",
+        "description": "Ask about your workspace",
+        "metadata": {
+          "sampleRequest": "How do I build this project?",
+          "themeIcon": {
+            "id": "code"
+          },
+          "hasFollowups": true,
+          "isSecondary": true,
+          "supportIssueReporting": false
+        },
+        "name": "workspace",
+        "fullName": "Workspace",
+        "locations": [
+          "panel"
+        ],
+        "slashCommands": [
+          {
+            "name": "explain",
+            "description": "Explain how the code in your active editor works"
+          },
+          {
+            "name": "tests",
+            "description": "Generate unit tests for the selected code"
+          },
+          {
+            "name": "fix",
+            "description": "Propose a fix for the problems in the selected code",
+            "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+          },
+          {
+            "name": "new",
+            "description": "Scaffold code for a new workspace",
+            "sampleRequest": "Create a RESTful API server using typescript",
+            "isSticky": true
+          },
+          {
+            "name": "newNotebook",
+            "description": "Create a new Jupyter Notebook",
+            "sampleRequest": "How do I create a notebook to load data from a csv file?"
+          }
+        ]
+      },
+      "slashCommand": {
+        "name": "explain",
+        "description": "Explain how the code in your active editor works"
+      },
+      "contentReferences": [],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "Explain each sections of the workflow in detail.",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 48
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 49
+            },
+            "text": "Explain each sections of the workflow in detail.",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Without the specific content of the `tf_cloud_aws.yml` file due to the selection issue, I'll provide a detailed explanation of the typical sections you might find in a GitHub Actions workflow file, especially one designed for deploying Terraform configurations to AWS (Amazon Web Services) using Terraform Cloud as the backend. This explanation will cover the general structure and purpose of each section in a GitHub Actions workflow.\n\n### Name\n\n```yaml\nname: Deploy Terraform to AWS\n```\n\n- **Purpose**: Specifies the name of the workflow. It's used for identification within the GitHub UI.\n\n### On (Trigger)\n\n```yaml\non:\n  push:\n    branches:\n      - main\n  pull_request:\n    branches:\n      - main\n  workflow_dispatch:\n```\n\n- **Purpose**: Defines the events that trigger the workflow. Common triggers include `push`, `pull_request`, and `workflow_dispatch` for manual execution. You can specify branches for `push` and `pull_request` events.\n\n### Jobs\n\n```yaml\njobs:\n  plan:\n    runs-on: ubuntu-latest\n    steps:\n    ...\n  apply:\n    runs-on: ubuntu-latest\n    needs: plan\n    steps:\n    ...\n```\n\n- **Purpose**: Defines the jobs that the workflow will execute. Jobs can run in parallel or be configured to run sequentially using the `needs` keyword. Each job runs on a specified runner environment (`runs-on`), such as `ubuntu-latest`.\n\n### Steps\n\n```yaml\nsteps:\n- uses: actions/checkout@v2\n- name: Terraform Plan\n  uses: hashicorp/setup-terraform@v1\n  with:\n    terraform_version: \"0.14.9\"\n```\n\n- **Purpose**: Each job contains a sequence of steps. Steps can execute commands, ",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "isCanceled": true,
+      "contentReferences": [],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "@workspace /explain ",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 10
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 11
+            },
+            "agent": {
+              "extensionId": {
+                "value": "GitHub.copilot-chat",
+                "_lower": "github.copilot-chat"
+              },
+              "publisherDisplayName": "GitHub",
+              "extensionPublisherId": "GitHub",
+              "extensionDisplayName": "GitHub Copilot Chat",
+              "id": "github.copilot.workspace",
+              "description": "Ask about your workspace",
+              "metadata": {
+                "sampleRequest": "How do I build this project?",
+                "themeIcon": {
+                  "id": "code"
+                },
+                "hasFollowups": true,
+                "isSecondary": true,
+                "supportIssueReporting": false
+              },
+              "name": "workspace",
+              "fullName": "Workspace",
+              "locations": [
+                "panel"
+              ],
+              "slashCommands": [
+                {
+                  "name": "explain",
+                  "description": "Explain how the code in your active editor works"
+                },
+                {
+                  "name": "tests",
+                  "description": "Generate unit tests for the selected code"
+                },
+                {
+                  "name": "fix",
+                  "description": "Propose a fix for the problems in the selected code",
+                  "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+                },
+                {
+                  "name": "new",
+                  "description": "Scaffold code for a new workspace",
+                  "sampleRequest": "Create a RESTful API server using typescript",
+                  "isSticky": true
+                },
+                {
+                  "name": "newNotebook",
+                  "description": "Create a new Jupyter Notebook",
+                  "sampleRequest": "How do I create a notebook to load data from a csv file?"
+                }
+              ]
+            },
+            "kind": "agent"
+          },
+          {
+            "range": {
+              "start": 10,
+              "endExclusive": 11
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 11,
+              "endLineNumber": 1,
+              "endColumn": 12
+            },
+            "text": " ",
+            "kind": "text"
+          },
+          {
+            "range": {
+              "start": 11,
+              "endExclusive": 19
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 12,
+              "endLineNumber": 1,
+              "endColumn": 20
+            },
+            "command": {
+              "name": "explain",
+              "description": "Explain how the code in your active editor works"
+            },
+            "kind": "subcommand"
+          },
+          {
+            "range": {
+              "start": 19,
+              "endExclusive": 20
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 20,
+              "endLineNumber": 1,
+              "endColumn": 21
+            },
+            "text": " ",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "I'm sorry for any confusion, but it seems there was a misunderstanding regarding the code or content you wanted explained. Without a specific selection or details about the code, I can only provide a general explanation based on the context you mentioned earlier, which is about a GitHub Actions workflow for deploying Terraform configurations to AWS.\n\nA GitHub Actions workflow is a powerful tool for automating software development processes directly within GitHub. When it comes to deploying Terraform configurations to AWS, such a workflow typically involves several key components and steps, each serving a distinct purpose in the deployment process.\n\n1. **Trigger Events**: The workflow is configured to trigger on specific GitHub events, such as pushes to the main branch or when a pull request is created. This ensures that the deployment process runs automatically when code changes are made, keeping your infrastructure up to date with the latest changes in your repository.\n\n2. **Jobs and Runners**: The workflow contains jobs that define the set of tasks to be executed. Each job runs on a runner, which is a virtual environment provided by GitHub Actions. Runners can be configured to use different operating systems, depending on the needs of your workflow.\n\n3. **Steps and Actions**: Within each job, you define steps. A step can be a single task or a command to execute. Steps can use actions, which are reusable pieces of code, to perform common tasks such as checking out your repository or setting up Terraform. This reuse of actions simplifies the workflow configuration and ensures consistency across different workflows.\n\n4. **Terraform Setup and Deployment**: In the context of deploying Terraform configurations, one of the steps will involve setting up Terraform using a specific action designed for this purpose. This action installs Terraform and configures it for use in the workflow. Following the setup, additional steps will execute Terraform commands to plan and apply your configurations, effectively deploying your infrastructure to AWS.\n\n5. **Environment Variables and Secrets**: To securely interact with AWS, the workflow uses environment variables and secrets. Secrets are encrypted values that you can use in your workflow, such as AWS access keys, without exposing them in your workflow file. This is crucial for maintaining the security of your AWS account.\n\n6. **Output and Logging**: Throughout the execution of the workflow, output and logs are generated, providing visibility into the deployment process. This information can be used to debug issues or verify that the deployment was successful.\n\nIn summary, a GitHub Actions workflow for deploying Terraform configurations to AWS automates the process of infrastructure deployment, from triggering on code changes to setting up Terraform and applying configurations. It leverages the power of GitHub Actions to provide a seamless, secure, and efficient deployment pipeline.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 1790,
+          "totalElapsed": 16980
+        },
+        "metadata": {
+          "modelMessageId": "0ba9e812-7418-412f-a154-edfb70efaddf",
+          "responseId": "830969c6-6b4e-43fb-b2e1-e85f1fe03438",
+          "sessionId": "1525ad91-45c0-4d33-b908-e1dc56aba20d",
+          "agentId": "github.copilot.workspace",
+          "command": "explain"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.workspace",
+          "subCommand": "explain",
+          "message": "How can I configure environment variables in a GitHub Actions workflow?"
+        }
+      ],
+      "isCanceled": false,
+      "vote": 0,
+      "agent": {
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "publisherDisplayName": "GitHub",
+        "extensionPublisherId": "GitHub",
+        "extensionDisplayName": "GitHub Copilot Chat",
+        "id": "github.copilot.workspace",
+        "description": "Ask about your workspace",
+        "metadata": {
+          "sampleRequest": "How do I build this project?",
+          "themeIcon": {
+            "id": "code"
+          },
+          "hasFollowups": true,
+          "isSecondary": true,
+          "supportIssueReporting": false
+        },
+        "name": "workspace",
+        "fullName": "Workspace",
+        "locations": [
+          "panel"
+        ],
+        "slashCommands": [
+          {
+            "name": "explain",
+            "description": "Explain how the code in your active editor works"
+          },
+          {
+            "name": "tests",
+            "description": "Generate unit tests for the selected code"
+          },
+          {
+            "name": "fix",
+            "description": "Propose a fix for the problems in the selected code",
+            "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+          },
+          {
+            "name": "new",
+            "description": "Scaffold code for a new workspace",
+            "sampleRequest": "Create a RESTful API server using typescript",
+            "isSticky": true
+          },
+          {
+            "name": "newNotebook",
+            "description": "Create a new Jupyter Notebook",
+            "sampleRequest": "How do I create a notebook to load data from a csv file?"
+          }
+        ]
+      },
+      "slashCommand": {
+        "name": "explain",
+        "description": "Explain how the code in your active editor works"
+      },
+      "contentReferences": [],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "@workspace /explain tf_cloud_aws.yml",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 10
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 11
+            },
+            "agent": {
+              "extensionId": {
+                "value": "GitHub.copilot-chat",
+                "_lower": "github.copilot-chat"
+              },
+              "publisherDisplayName": "GitHub",
+              "extensionPublisherId": "GitHub",
+              "extensionDisplayName": "GitHub Copilot Chat",
+              "id": "github.copilot.workspace",
+              "description": "Ask about your workspace",
+              "metadata": {
+                "sampleRequest": "How do I build this project?",
+                "themeIcon": {
+                  "id": "code"
+                },
+                "hasFollowups": true,
+                "isSecondary": true,
+                "supportIssueReporting": false
+              },
+              "name": "workspace",
+              "fullName": "Workspace",
+              "locations": [
+                "panel"
+              ],
+              "slashCommands": [
+                {
+                  "name": "explain",
+                  "description": "Explain how the code in your active editor works"
+                },
+                {
+                  "name": "tests",
+                  "description": "Generate unit tests for the selected code"
+                },
+                {
+                  "name": "fix",
+                  "description": "Propose a fix for the problems in the selected code",
+                  "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+                },
+                {
+                  "name": "new",
+                  "description": "Scaffold code for a new workspace",
+                  "sampleRequest": "Create a RESTful API server using typescript",
+                  "isSticky": true
+                },
+                {
+                  "name": "newNotebook",
+                  "description": "Create a new Jupyter Notebook",
+                  "sampleRequest": "How do I create a notebook to load data from a csv file?"
+                }
+              ]
+            },
+            "kind": "agent"
+          },
+          {
+            "range": {
+              "start": 10,
+              "endExclusive": 11
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 11,
+              "endLineNumber": 1,
+              "endColumn": 12
+            },
+            "text": " ",
+            "kind": "text"
+          },
+          {
+            "range": {
+              "start": 11,
+              "endExclusive": 19
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 12,
+              "endLineNumber": 1,
+              "endColumn": 20
+            },
+            "command": {
+              "name": "explain",
+              "description": "Explain how the code in your active editor works"
+            },
+            "kind": "subcommand"
+          },
+          {
+            "range": {
+              "start": 19,
+              "endExclusive": 36
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 20,
+              "endLineNumber": 1,
+              "endColumn": 37
+            },
+            "text": " tf_cloud_aws.yml",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "kind": "progressMessage",
+          "content": {
+            "value": "Searching for relevant definitions...",
+            "uris": {}
+          }
+        },
+        {
+          "kind": "progressMessage",
+          "content": {
+            "value": "Searching for relevant references...",
+            "uris": {}
+          }
+        },
+        {
+          "value": "The [`tf_cloud_aws.yml`](command:_github.copilot.openRelativePath?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_cloud_aws.yml%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%5D \"/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml\") file you've shared is a GitHub Actions workflow designed for creating AWS resources using Terraform Cloud. Let's break down each section of the workflow to understand its purpose and functionality.\n\n### Workflow Description\n\n```yaml\n# This workflow will create AWS resource using TF Cloud \n# It is reusable workflow that can be called in other workflows\n```\n\nThese initial comments describe the purpose of the workflow: to create AWS resources using Terraform Cloud. It also mentions that this workflow is reusable, meaning it can be invoked from other workflows within the same or different repositories.\n\n### Name\n\n```yaml\nname: AWS Infra Creation Using in TF Cloud \n```\n\nThis line sets the name of the workflow, which appears in the GitHub Actions UI. It helps identify the workflow's purpose at a glance.\n\n### Trigger Events\n\n```yaml\non:\n  workflow_call:\n    secrets:\n        TF_API_TOKEN:\n            required: true\n  push:\n    branches: [ \"main\" ]\n  pull_request:\n    branches: [ \"main\" ]\n  workflow_dispatch:\n```\n\nThe `on` section defines the events that trigger the workflow:\n\n- `workflow_call`: Allows this workflow to be called from another workflow. It requires a secret `TF_API_TOKEN`, which is essential for authenticating with Terraform Cloud.\n- `push` and `pull_request`: Triggers the workflow on push events and pull requests to the `main` branch, enabling CI/CD practices.\n- `workflow_dispatch`: Allows manual triggering of the workflow from the GitHub UI, providing flexibility for ad-hoc operations.\n\n### Environment Variables\n\n```yaml\nenv:\n  tfcode_path: tfcloud_samples/amazon_ec2\n  tfc_organisation: gsaravanan-tf\n  tfc_hostname: app.terraform.io\n  tfc_workspace: example-workspace\n```\n\nThe `env` section defines environment variables that are used throughout the workflow. These include paths and identifiers necessary for Terraform Cloud operations, such as the path to the Terraform code, the Terraform Cloud organization, hostname, and workspace name.\n\n### Jobs\n\n```yaml\njobs: \n  aws_tfc_job:\n    name: Create AWS Infra Using TFC\n```\n\nThe `jobs` section defines the tasks that the workflow will execute. In this case, there's a single job named `aws_tfc_job`, with a descriptive name indicating it creates AWS infrastructure using Terraform Cloud (TFC).\n\n### Summary\n\nThis workflow is designed to automate the creation of AWS resources through Terraform Cloud, leveraging GitHub Actions for CI/CD. It's triggered by various events, including being called from other workflows, making it a flexible tool for infrastructure management. The workflow requires a Terraform Cloud API token for authentication, ensuring secure interaction with Terraform Cloud.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 103,
+          "totalElapsed": 26948
+        },
+        "metadata": {
+          "modelMessageId": "82d27b4d-21ac-4ca8-93cc-add1631e4a0d",
+          "responseId": "afe9b805-b032-4e4a-800d-94c6c8471387",
+          "sessionId": "1525ad91-45c0-4d33-b908-e1dc56aba20d",
+          "agentId": "github.copilot.workspace",
+          "command": "explain"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.workspace",
+          "subCommand": "explain",
+          "message": "What are the available options for defining environment variables in GitHub Actions workflows?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "publisherDisplayName": "GitHub",
+        "extensionPublisherId": "GitHub",
+        "extensionDisplayName": "GitHub Copilot Chat",
+        "id": "github.copilot.workspace",
+        "description": "Ask about your workspace",
+        "metadata": {
+          "sampleRequest": "How do I build this project?",
+          "themeIcon": {
+            "id": "code"
+          },
+          "hasFollowups": true,
+          "isSecondary": true,
+          "supportIssueReporting": false
+        },
+        "name": "workspace",
+        "fullName": "Workspace",
+        "locations": [
+          "panel"
+        ],
+        "slashCommands": [
+          {
+            "name": "explain",
+            "description": "Explain how the code in your active editor works"
+          },
+          {
+            "name": "tests",
+            "description": "Generate unit tests for the selected code"
+          },
+          {
+            "name": "fix",
+            "description": "Propose a fix for the problems in the selected code",
+            "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+          },
+          {
+            "name": "new",
+            "description": "Scaffold code for a new workspace",
+            "sampleRequest": "Create a RESTful API server using typescript",
+            "isSticky": true
+          },
+          {
+            "name": "newNotebook",
+            "description": "Create a new Jupyter Notebook",
+            "sampleRequest": "How do I create a notebook to load data from a csv file?"
+          }
+        ]
+      },
+      "slashCommand": {
+        "name": "explain",
+        "description": "Explain how the code in your active editor works"
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "external": "file:///Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "path": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_cloud_aws.yml",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 26,
+              "endColumn": 1
+            }
+          }
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "@workspace /explain tf_cloud_aws.yml",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 10
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 11
+            },
+            "agent": {
+              "extensionId": {
+                "value": "GitHub.copilot-chat",
+                "_lower": "github.copilot-chat"
+              },
+              "publisherDisplayName": "GitHub",
+              "extensionPublisherId": "GitHub",
+              "extensionDisplayName": "GitHub Copilot Chat",
+              "id": "github.copilot.workspace",
+              "description": "Ask about your workspace",
+              "metadata": {
+                "sampleRequest": "How do I build this project?",
+                "themeIcon": {
+                  "id": "code"
+                },
+                "hasFollowups": true,
+                "isSecondary": true,
+                "supportIssueReporting": false
+              },
+              "name": "workspace",
+              "fullName": "Workspace",
+              "locations": [
+                "panel"
+              ],
+              "slashCommands": [
+                {
+                  "name": "explain",
+                  "description": "Explain how the code in your active editor works"
+                },
+                {
+                  "name": "tests",
+                  "description": "Generate unit tests for the selected code"
+                },
+                {
+                  "name": "fix",
+                  "description": "Propose a fix for the problems in the selected code",
+                  "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+                },
+                {
+                  "name": "new",
+                  "description": "Scaffold code for a new workspace",
+                  "sampleRequest": "Create a RESTful API server using typescript",
+                  "isSticky": true
+                },
+                {
+                  "name": "newNotebook",
+                  "description": "Create a new Jupyter Notebook",
+                  "sampleRequest": "How do I create a notebook to load data from a csv file?"
+                }
+              ]
+            },
+            "kind": "agent"
+          },
+          {
+            "range": {
+              "start": 10,
+              "endExclusive": 11
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 11,
+              "endLineNumber": 1,
+              "endColumn": 12
+            },
+            "text": " ",
+            "kind": "text"
+          },
+          {
+            "range": {
+              "start": 11,
+              "endExclusive": 19
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 12,
+              "endLineNumber": 1,
+              "endColumn": 20
+            },
+            "command": {
+              "name": "explain",
+              "description": "Explain how the code in your active editor works"
+            },
+            "kind": "subcommand"
+          },
+          {
+            "range": {
+              "start": 19,
+              "endExclusive": 36
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 20,
+              "endLineNumber": 1,
+              "endColumn": 37
+            },
+            "text": " tf_cloud_aws.yml",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "I'm here to help with software development topics. If you have specific questions or need explanations related to software development, feel free to ask!",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 1936,
+          "totalElapsed": 2552
+        },
+        "metadata": {
+          "modelMessageId": "8050bf83-14cb-4fa7-b654-f6789fdc750e",
+          "responseId": "8e239750-d807-4618-aded-41dd1d717bdf",
+          "sessionId": "1525ad91-45c0-4d33-b908-e1dc56aba20d",
+          "agentId": "github.copilot.workspace",
+          "command": "explain"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.workspace",
+          "subCommand": "explain",
+          "message": "What are the common steps involved in setting up a GitHub Actions workflow for deploying Terraform configurations to AWS?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "publisherDisplayName": "GitHub",
+        "extensionPublisherId": "GitHub",
+        "extensionDisplayName": "GitHub Copilot Chat",
+        "id": "github.copilot.workspace",
+        "description": "Ask about your workspace",
+        "metadata": {
+          "sampleRequest": "How do I build this project?",
+          "themeIcon": {
+            "id": "code"
+          },
+          "hasFollowups": true,
+          "isSecondary": true,
+          "supportIssueReporting": false
+        },
+        "name": "workspace",
+        "fullName": "Workspace",
+        "locations": [
+          "panel"
+        ],
+        "slashCommands": [
+          {
+            "name": "explain",
+            "description": "Explain how the code in your active editor works"
+          },
+          {
+            "name": "tests",
+            "description": "Generate unit tests for the selected code"
+          },
+          {
+            "name": "fix",
+            "description": "Propose a fix for the problems in the selected code",
+            "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+          },
+          {
+            "name": "new",
+            "description": "Scaffold code for a new workspace",
+            "sampleRequest": "Create a RESTful API server using typescript",
+            "isSticky": true
+          },
+          {
+            "name": "newNotebook",
+            "description": "Create a new Jupyter Notebook",
+            "sampleRequest": "How do I create a notebook to load data from a csv file?"
+          }
+        ]
+      },
+      "slashCommand": {
+        "name": "explain",
+        "description": "Explain how the code in your active editor works"
+      },
+      "contentReferences": [],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "text": "Explain the github action workflow code tf_cloud_aws.yml",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 56
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 57
+            },
+            "text": "Explain the github action workflow code tf_cloud_aws.yml",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Without the specific content of the `tf_cloud_aws.yml` file due to the selection issue, I'll provide a detailed explanation of the typical sections you might find in a GitHub Actions workflow file, especially one designed for deploying Terraform configurations to AWS (Amazon Web Services) using Terraform Cloud as the backend. This explanation will cover the general structure and purpose of each section in a GitHub Actions workflow.\n\n### Name\n\n```yaml\nname: Deploy Terraform to AWS\n```\n\n- **Purpose**: Specifies the name of the workflow. It's used for identification within the GitHub UI.\n\n### On (Trigger)\n\n```yaml\non:\n  push:\n    branches:\n      - main\n  pull_request:\n    branches:\n      - main\n  workflow_dispatch:\n```\n\n- **Purpose**: Defines the events that trigger the workflow. Common triggers include `push`, `pull_request`, and `workflow_dispatch` for manual execution. You can specify branches for `push` and `pull_request` events.\n\n### Jobs\n\n```yaml\njobs:\n  plan:\n    runs-on: ubuntu-latest\n    steps:\n    ...\n  apply:\n    runs-on: ubuntu-latest\n    needs: plan\n    steps:\n    ...\n```\n\n- **Purpose**: Defines the jobs that the workflow will execute. Jobs can run in parallel or be configured to run sequentially using the `needs` keyword. Each job runs on a specified runner environment (`runs-on`), such as `ubuntu-latest`.\n\n### Steps\n\n```yaml\nsteps:\n- uses: actions/checkout@v2\n- name: Terraform Plan\n  uses: hashicorp/setup-terraform@v1\n  with:\n    terraform_version: \"0.14.9\"\n```\n\n- **Purpose**: Each job contains a sequence of steps. Steps can execute commands, use actions, or run scripts. The `uses` keyword indicates an action being used, such as `actions/checkout@v2` for checking out the code, and `hashicorp/setup-terraform@v1` for setting up Terraform. The `with` keyword is used to pass parameters to actions.\n\n### Environment Variables and Secrets\n\n```yaml\nenv:\n  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}\n  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}\n```\n\n- **Purpose**: Specifies environment variables for the workflow. Sensitive information like AWS credentials is stored in GitHub Secrets and accessed using the `${{ secrets.SECRET_NAME }}` syntax, ensuring security.\n\n### Terraform Cloud Configuration\n\nFor workflows integrating with Terraform Cloud, you might see additional steps or configurations specific to Terraform Cloud, such as setting up Terraform Cloud API tokens, configuring backend files, or specifying workspace names.\n\n### Conclusion\n\nThis breakdown covers the typical sections you might find in a GitHub Actions workflow file for deploying Terraform configurations to AWS. Each section plays a crucial role in defining when the workflow runs, what jobs it contains, and how those jobs are executed.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 1950,
+          "totalElapsed": 24460
+        },
+        "metadata": {
+          "modelMessageId": "a9508c62-35e9-48d3-adf5-4c6797762668",
+          "responseId": "4f113869-092d-4314-a085-73f95b6f010c",
+          "sessionId": "70bac323-53e1-4d11-8f70-6ac614e91bee",
+          "agentId": "github.copilot.default"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.default",
+          "message": "How can I configure GitHub Actions to run tests for my Terraform code?"
+        }
+      ],
+      "isCanceled": false,
+      "contentReferences": [],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 10
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 11
+            },
+            "agent": {
+              "extensionId": {
+                "value": "GitHub.copilot-chat",
+                "_lower": "github.copilot-chat"
+              },
+              "publisherDisplayName": "GitHub",
+              "extensionPublisherId": "GitHub",
+              "extensionDisplayName": "GitHub Copilot Chat",
+              "id": "github.copilot.workspace",
+              "description": "Ask about your workspace",
+              "metadata": {
+                "sampleRequest": "How do I build this project?",
+                "themeIcon": {
+                  "id": "code"
+                },
+                "hasFollowups": true,
+                "isSecondary": true,
+                "supportIssueReporting": false
+              },
+              "name": "workspace",
+              "fullName": "Workspace",
+              "locations": [
+                "panel"
+              ],
+              "slashCommands": [
+                {
+                  "name": "explain",
+                  "description": "Explain how the code in your active editor works"
+                },
+                {
+                  "name": "tests",
+                  "description": "Generate unit tests for the selected code"
+                },
+                {
+                  "name": "fix",
+                  "description": "Propose a fix for the problems in the selected code",
+                  "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+                },
+                {
+                  "name": "new",
+                  "description": "Scaffold code for a new file or project in a workspace",
+                  "sampleRequest": "Create a RESTful API server using typescript",
+                  "isSticky": true
+                },
+                {
+                  "name": "newNotebook",
+                  "description": "Create a new Jupyter Notebook",
+                  "sampleRequest": "How do I create a notebook to load data from a csv file?"
+                }
+              ]
+            },
+            "kind": "agent"
+          },
+          {
+            "range": {
+              "start": 10,
+              "endExclusive": 11
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 11,
+              "endLineNumber": 1,
+              "endColumn": 12
+            },
+            "text": " ",
+            "kind": "text"
+          },
+          {
+            "range": {
+              "start": 11,
+              "endExclusive": 19
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 12,
+              "endLineNumber": 1,
+              "endColumn": 20
+            },
+            "command": {
+              "name": "explain",
+              "description": "Explain how the code in your active editor works"
+            },
+            "kind": "subcommand"
+          },
+          {
+            "range": {
+              "start": 19,
+              "endExclusive": 20
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 20,
+              "endLineNumber": 1,
+              "endColumn": 21
+            },
+            "text": " ",
+            "kind": "text"
+          }
+        ],
+        "text": "@workspace /explain "
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Certainly! Let's break down the `tf_cloud_aws.yml` file, which is a GitHub Actions workflow designed to create AWS resources using Terraform Cloud. This workflow is reusable, meaning it can be invoked from other workflows within the same or different repositories.\n\n### Workflow Description and Name\n\nThe workflow starts with a comment explaining its purpose: to create AWS resources using Terraform Cloud. It is designed to be reusable, which means it can be called from other workflows. The workflow is named \"AWS Infra Creation Using in TF Cloud,\" which helps identify its purpose in the GitHub Actions UI.\n\n### Trigger Events\n\nThe `on` section specifies the events that trigger the workflow. It includes:\n- `workflow_call`: This allows the workflow to be called from another workflow. It requires a secret `TF_API_TOKEN`, which is essential for authenticating with Terraform Cloud.\n- `push` and `pull_request`: These events trigger the workflow when there are push events or pull requests to the `main` branch. This is useful for continuous integration and deployment practices.\n- `workflow_dispatch`: This allows the workflow to be manually triggered from the GitHub UI, providing flexibility for ad-hoc operations.\n\n### Environment Variables\n\nThe `env` section defines environment variables that are used throughout the workflow. These variables include:\n- `tfcode_path`: The path to the Terraform code, set to [`tfcloud_samples/amazon_ec2`](command:_github.copilot.openRelativePath?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2Ftfcloud_samples%2Famazon_ec2%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%5D \"/Users/gsaravanan/Documents/github/terraform_repo/tfcloud_samples/amazon_ec2\").\n- `tfc_organisation`: The Terraform Cloud organization, set to `gsaravanan-tf`.\n- `tfc_hostname`: The Terraform Cloud hostname, set to `app.terraform.io`.\n- `tfc_workspace`: The Terraform Cloud workspace name, set to `example-workspace`.\n\n### Jobs\n\nThe `jobs` section defines the tasks that the workflow will execute. In this case, there is a single job named `aws_tfc_job`, with a descriptive name \"Create AWS Infra Using TFC.\" This job will contain the steps necessary to set up and apply the Terraform configuration to create AWS resources.\n\n### Conclusion\n\nThis GitHub Actions workflow is designed to automate the creation of AWS resources using Terraform Cloud. It is triggered by various events, including being called from other workflows, making it a flexible tool for infrastructure management. The workflow requires a Terraform Cloud API token for authentication, ensuring secure interaction with Terraform Cloud. By defining environment variables and specifying the necessary jobs and steps, this workflow provides a streamlined and automated approach to managing AWS infrastructure.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 1304,
+          "totalElapsed": 7508
+        },
+        "metadata": {
+          "modelMessageId": "e3d1b932-fe59-4055-8c05-edeebbd74ceb",
+          "responseId": "06c0dcd9-4cb9-46f7-ace7-cae4feaed93c",
+          "sessionId": "1525ad91-45c0-4d33-b908-e1dc56aba20d",
+          "agentId": "github.copilot.workspace",
+          "command": "explain"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.workspace",
+          "subCommand": "explain",
+          "message": "What are the steps involved in the `aws_tfc_job` job of the `tf_cloud_aws.yml` workflow?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "publisherDisplayName": "GitHub",
+        "extensionPublisherId": "GitHub",
+        "extensionDisplayName": "GitHub Copilot Chat",
+        "id": "github.copilot.workspace",
+        "description": "Ask about your workspace",
+        "metadata": {
+          "sampleRequest": "How do I build this project?",
+          "themeIcon": {
+            "id": "code"
+          },
+          "hasFollowups": true,
+          "isSecondary": true,
+          "supportIssueReporting": false
+        },
+        "name": "workspace",
+        "fullName": "Workspace",
+        "locations": [
+          "panel"
+        ],
+        "slashCommands": [
+          {
+            "name": "explain",
+            "description": "Explain how the code in your active editor works"
+          },
+          {
+            "name": "tests",
+            "description": "Generate unit tests for the selected code"
+          },
+          {
+            "name": "fix",
+            "description": "Propose a fix for the problems in the selected code",
+            "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+          },
+          {
+            "name": "new",
+            "description": "Scaffold code for a new file or project in a workspace",
+            "sampleRequest": "Create a RESTful API server using typescript",
+            "isSticky": true
+          },
+          {
+            "name": "newNotebook",
+            "description": "Create a new Jupyter Notebook",
+            "sampleRequest": "How do I create a notebook to load data from a csv file?"
+          }
+        ]
+      },
+      "slashCommand": {
+        "name": "explain",
+        "description": "Explain how the code in your active editor works"
+      },
+      "contentReferences": [],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 10
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 11
+            },
+            "agent": {
+              "extensionId": {
+                "value": "GitHub.copilot-chat",
+                "_lower": "github.copilot-chat"
+              },
+              "publisherDisplayName": "GitHub",
+              "extensionPublisherId": "GitHub",
+              "extensionDisplayName": "GitHub Copilot Chat",
+              "id": "github.copilot.workspace",
+              "description": "Ask about your workspace",
+              "metadata": {
+                "sampleRequest": "How do I build this project?",
+                "themeIcon": {
+                  "id": "code"
+                },
+                "hasFollowups": true,
+                "isSecondary": true,
+                "supportIssueReporting": false
+              },
+              "name": "workspace",
+              "fullName": "Workspace",
+              "locations": [
+                "panel"
+              ],
+              "slashCommands": [
+                {
+                  "name": "explain",
+                  "description": "Explain how the code in your active editor works"
+                },
+                {
+                  "name": "tests",
+                  "description": "Generate unit tests for the selected code"
+                },
+                {
+                  "name": "fix",
+                  "description": "Propose a fix for the problems in the selected code",
+                  "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+                },
+                {
+                  "name": "new",
+                  "description": "Scaffold code for a new file or project in a workspace",
+                  "sampleRequest": "Create a RESTful API server using typescript",
+                  "isSticky": true
+                },
+                {
+                  "name": "newNotebook",
+                  "description": "Create a new Jupyter Notebook",
+                  "sampleRequest": "How do I create a notebook to load data from a csv file?"
+                }
+              ]
+            },
+            "kind": "agent"
+          },
+          {
+            "range": {
+              "start": 10,
+              "endExclusive": 11
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 11,
+              "endLineNumber": 1,
+              "endColumn": 12
+            },
+            "text": " ",
+            "kind": "text"
+          },
+          {
+            "range": {
+              "start": 11,
+              "endExclusive": 19
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 12,
+              "endLineNumber": 1,
+              "endColumn": 20
+            },
+            "command": {
+              "name": "explain",
+              "description": "Explain how the code in your active editor works"
+            },
+            "kind": "subcommand"
+          },
+          {
+            "range": {
+              "start": 19,
+              "endExclusive": 20
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 20,
+              "endLineNumber": 1,
+              "endColumn": 21
+            },
+            "text": " ",
+            "kind": "text"
+          }
+        ],
+        "text": "@workspace /explain "
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "kind": "progressMessage",
+          "content": {
+            "value": "Searching for relevant definitions...",
+            "uris": {}
+          }
+        },
+        {
+          "kind": "progressMessage",
+          "content": {
+            "value": "Searching for relevant references...",
+            "uris": {}
+          }
+        },
+        {
+          "value": "Certainly! Let's break down and explain the provided code snippets from your GitHub Actions workflow file.\n\n### Workflow Name\n\nThe line:\n```yaml\nname: Terraform AWS Workflow\n```\nThis line sets the name of the workflow to \"Terraform AWS Workflow.\" This name will appear in the GitHub Actions UI, helping you and your team identify the purpose of this workflow at a glance. Naming workflows clearly is a good practice as it improves readability and maintainability, especially in repositories with multiple workflows.\n\n### Terraform Initialization and Validation\n\nThe following excerpt from lines 41 to 52 of your [`tf_code_validation_aws.yml`](command:_github.copilot.openRelativePath?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%5D \"/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_code_validation_aws.yml\") file outlines steps for initializing and validating Terraform configurations:\n\n```yaml\necho \"** Running Terraform Init**\"\nterraform init\n\necho \"** Running Terraform Validate**\"\nterraform validate\nworking-directory: ${{ github.event.inputs.tfpath }}\n```\n\n1. **Terraform Init**: The command [`terraform init`](command:_github.copilot.openSymbolFromReferences?%5B%22terraform%20init%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A41%2C%22character%22%3A18%7D%7D%5D%5D \"Go to definition\") initializes the Terraform configuration. This step downloads the necessary provider plugins and sets up the backend for storing the state. The [`echo`](command:_github.copilot.openSymbolFromReferences?%5B%22echo%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A40%2C%22character%22%3A8%7D%7D%5D%5D \"Go to definition\") statement before it is used to print a message to the console, indicating that the initialization process is starting.\n\n2. **Terraform Validate**: The command [`terraform validate`](command:_github.copilot.openSymbolFromReferences?%5B%22terraform%20validate%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A44%2C%22character%22%3A18%7D%7D%5D%5D \"Go to definition\") checks the configuration files for syntax errors and validates the configuration against the provider schemas. This ensures that the configuration is syntactically correct and can be applied without errors. Again, the [`echo`](command:_github.copilot.openSymbolFromReferences?%5B%22echo%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A40%2C%22character%22%3A8%7D%7D%5D%5D \"Go to definition\") statement provides a console message indicating the start of the validation process.\n\n3. **Working Directory**: The [`working-directory`](command:_github.copilot.openSymbolFromReferences?%5B%22working-directory%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A45%2C%22character%22%3A6%7D%7D%5D%5D \"Go to definition\") attribute is set to `${{ github.event.inputs.tfpath }}`, which dynamically sets the working directory based on the input provided in the GitHub event. This allows the workflow to be flexible and reusable, as it can operate on different Terraform configurations specified at runtime.\n\n### Terraform Plan and Apply\n\nThe next part of the code handles the planning and application of the Terraform configuration:\n\n```yaml\n- name: Terraform plan and apply\n  run: |\n    echo `pwd`\n    echo \"tfpath ${{ github.event.inputs.tfpath }}\"        \n    echo \"** Running Terraform Plan**\"\n    terraform plan\n```\n\n1. **Step Name**: The step is named \"Terraform plan and apply,\" indicating its purpose is to plan and potentially apply the Terraform configuration.\n\n2. **Print Working Directory**: The command [`echo \\`](command:_github.copilot.openSymbolFromReferences?%5B%22echo%20%5C%5C%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A40%2C%22character%22%3A8%7D%7D%5D%5D \"Go to definition\")pwd\\`` prints the current working directory to the console. This is useful for debugging purposes, ensuring that the workflow is operating in the correct directory.\n\n3. **Print tfpath**: The command [`echo \"tfpath ${{ github.event.inputs.tfpath }}\"`](command:_github.copilot.openSymbolFromReferences?%5B%22echo%20%5C%22tfpath%20%24%7B%7B%20github.event.inputs.tfpath%20%7D%7D%5C%22%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A40%2C%22character%22%3A8%7D%7D%5D%5D \"Go to definition\") prints the value of the [`tfpath`](command:_github.copilot.openSymbolFromReferences?%5B%22tfpath%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A45%2C%22character%22%3A49%7D%7D%5D%5D \"Go to definition\") input to the console. This helps verify that the correct path is being used for the Terraform operations.\n\n4. **Terraform Plan**: The command [`terraform plan`](command:_github.copilot.openSymbolFromReferences?%5B%22terraform%20plan%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A46%2C%22character%22%3A22%7D%7D%5D%5D \"Go to definition\") generates an execution plan, showing what actions Terraform will take to achieve the desired state defined in the configuration files. This step is crucial for understanding the changes that will be made before actually applying them.\n\n### Summary\n\nIn summary, the provided code snippets are part of a GitHub Actions workflow named \"Terraform AWS Workflow.\" The workflow includes steps for initializing and validating Terraform configurations, as well as planning the changes to be made. The use of [`echo`](command:_github.copilot.openSymbolFromReferences?%5B%22echo%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A40%2C%22character%22%3A8%7D%7D%5D%5D \"Go to definition\") statements helps provide clear console messages, aiding in debugging and understanding the workflow's progress. The dynamic setting of the working directory based on GitHub event inputs makes the workflow flexible and reusable for different Terraform configurations.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 128,
+          "totalElapsed": 9779
+        },
+        "metadata": {
+          "modelMessageId": "c6a066fb-eeb3-46bd-ad6b-11d789c1d10f",
+          "responseId": "7f280d59-1852-48f8-8f57-eda2e0a41f33",
+          "sessionId": "1525ad91-45c0-4d33-b908-e1dc56aba20d",
+          "agentId": "github.copilot.workspace",
+          "command": "explain"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.workspace",
+          "subCommand": "explain",
+          "message": "What are some best practices for organizing and structuring Terraform code?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "publisherDisplayName": "GitHub",
+        "extensionPublisherId": "GitHub",
+        "extensionDisplayName": "GitHub Copilot Chat",
+        "id": "github.copilot.workspace",
+        "description": "Ask about your workspace",
+        "metadata": {
+          "sampleRequest": "How do I build this project?",
+          "themeIcon": {
+            "id": "code"
+          },
+          "hasFollowups": true,
+          "isSecondary": true,
+          "supportIssueReporting": false
+        },
+        "name": "workspace",
+        "fullName": "Workspace",
+        "locations": [
+          "panel"
+        ],
+        "slashCommands": [
+          {
+            "name": "explain",
+            "description": "Explain how the code in your active editor works"
+          },
+          {
+            "name": "tests",
+            "description": "Generate unit tests for the selected code"
+          },
+          {
+            "name": "fix",
+            "description": "Propose a fix for the problems in the selected code",
+            "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+          },
+          {
+            "name": "new",
+            "description": "Scaffold code for a new file or project in a workspace",
+            "sampleRequest": "Create a RESTful API server using typescript",
+            "isSticky": true
+          },
+          {
+            "name": "newNotebook",
+            "description": "Create a new Jupyter Notebook",
+            "sampleRequest": "How do I create a notebook to load data from a csv file?"
+          }
+        ]
+      },
+      "slashCommand": {
+        "name": "explain",
+        "description": "Explain how the code in your active editor works"
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_code_validation_aws.yml",
+              "external": "file:///Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_code_validation_aws.yml",
+              "path": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_code_validation_aws.yml",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 29
+            }
+          }
+        },
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_code_validation_aws.yml",
+              "external": "file:///Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_code_validation_aws.yml",
+              "path": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_code_validation_aws.yml",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 41,
+              "startColumn": 1,
+              "endLineNumber": 52,
+              "endColumn": 23
+            }
+          }
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 10
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 11
+            },
+            "agent": {
+              "extensionId": {
+                "value": "GitHub.copilot-chat",
+                "_lower": "github.copilot-chat"
+              },
+              "publisherDisplayName": "GitHub",
+              "extensionPublisherId": "GitHub",
+              "extensionDisplayName": "GitHub Copilot Chat",
+              "id": "github.copilot.workspace",
+              "description": "Ask about your workspace",
+              "metadata": {
+                "sampleRequest": "How do I build this project?",
+                "themeIcon": {
+                  "id": "code"
+                },
+                "hasFollowups": true,
+                "isSecondary": true,
+                "supportIssueReporting": false
+              },
+              "name": "workspace",
+              "fullName": "Workspace",
+              "locations": [
+                "panel"
+              ],
+              "slashCommands": [
+                {
+                  "name": "explain",
+                  "description": "Explain how the code in your active editor works"
+                },
+                {
+                  "name": "tests",
+                  "description": "Generate unit tests for the selected code"
+                },
+                {
+                  "name": "fix",
+                  "description": "Propose a fix for the problems in the selected code",
+                  "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+                },
+                {
+                  "name": "new",
+                  "description": "Scaffold code for a new file or project in a workspace",
+                  "sampleRequest": "Create a RESTful API server using typescript",
+                  "isSticky": true
+                },
+                {
+                  "name": "newNotebook",
+                  "description": "Create a new Jupyter Notebook",
+                  "sampleRequest": "How do I create a notebook to load data from a csv file?"
+                }
+              ]
+            },
+            "kind": "agent"
+          },
+          {
+            "range": {
+              "start": 10,
+              "endExclusive": 11
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 11,
+              "endLineNumber": 1,
+              "endColumn": 12
+            },
+            "text": " ",
+            "kind": "text"
+          },
+          {
+            "range": {
+              "start": 11,
+              "endExclusive": 19
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 12,
+              "endLineNumber": 1,
+              "endColumn": 20
+            },
+            "command": {
+              "name": "explain",
+              "description": "Explain how the code in your active editor works"
+            },
+            "kind": "subcommand"
+          },
+          {
+            "range": {
+              "start": 19,
+              "endExclusive": 20
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 20,
+              "endLineNumber": 1,
+              "endColumn": 21
+            },
+            "text": " ",
+            "kind": "text"
+          }
+        ],
+        "text": "@workspace /explain "
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "The provided code is a GitHub Actions workflow file named [`tf_code_validation_aws.yml`](command:_github.copilot.openRelativePath?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%5D \"/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_code_validation_aws.yml\"). This workflow is designed to automate the process of validating, planning, applying, and destroying Terraform configurations for AWS resources. The workflow is named \"Terraform AWS Workflow\" and is triggered by various events, including manual dispatch, push events, and pull requests to the [`main`](command:_github.copilot.openSymbolFromReferences?%5B%22main%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A12%2C%22character%22%3A16%7D%7D%5D%5D \"Go to definition\") branch.\n\n### Trigger Events and Inputs\n\nThe [`on`](command:_github.copilot.openSymbolFromReferences?%5B%22on%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A2%2C%22character%22%3A0%7D%7D%5D%5D \"Go to definition\") section specifies the events that trigger the workflow. It includes:\n- [`workflow_call`](command:_github.copilot.openSymbolFromReferences?%5B%22workflow_call%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A3%2C%22character%22%3A2%7D%7D%5D%5D \"Go to definition\"): Allows the workflow to be called from another workflow.\n- [`workflow_dispatch`](command:_github.copilot.openSymbolFromReferences?%5B%22workflow_dispatch%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A4%2C%22character%22%3A2%7D%7D%5D%5D \"Go to definition\"): Enables manual triggering of the workflow from the GitHub UI. It accepts an input named [`tfpath`](command:_github.copilot.openSymbolFromReferences?%5B%22tfpath%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A7%2C%22character%22%3A6%7D%7D%5D%5D \"Go to definition\"), which specifies the path to the Terraform configuration files. This input is optional and defaults to [`aws_samples/create_ec2`](command:_github.copilot.openRelativePath?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2Faws_samples%2Fcreate_ec2%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%5D \"/Users/gsaravanan/Documents/github/terraform_repo/aws_samples/create_ec2\").\n- [`push`](command:_github.copilot.openSymbolFromReferences?%5B%22push%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A11%2C%22character%22%3A2%7D%7D%5D%5D \"Go to definition\") and [`pull_request`](command:_github.copilot.openSymbolFromReferences?%5B%22pull_request%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A13%2C%22character%22%3A2%7D%7D%5D%5D \"Go to definition\"): These events trigger the workflow when there are push events or pull requests to the [`main`](command:_github.copilot.openSymbolFromReferences?%5B%22main%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A12%2C%22character%22%3A16%7D%7D%5D%5D \"Go to definition\") branch, facilitating continuous integration and deployment.\n\n### Job Definition\n\nThe [`jobs`](command:_github.copilot.openSymbolFromReferences?%5B%22jobs%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A16%2C%22character%22%3A0%7D%7D%5D%5D \"Go to definition\") section defines a single job named [`tf_code_check`](command:_github.copilot.openSymbolFromReferences?%5B%22tf_code_check%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A17%2C%22character%22%3A2%7D%7D%5D%5D \"Go to definition\"), which runs on the latest Ubuntu environment ([`ubuntu-latest`](command:_github.copilot.openSymbolFromReferences?%5B%22ubuntu-latest%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A19%2C%22character%22%3A13%7D%7D%5D%5D \"Go to definition\")). The job is named \"Terraform Validation and Build\" and includes several steps to perform the necessary Terraform operations.\n\n### Steps in the Job\n\n1. **Checkout Code**: The first step uses the [`actions/checkout@v3.5.2`](command:_github.copilot.openSymbolFromReferences?%5B%22actions%2Fcheckout%40v3.5.2%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A24%2C%22character%22%3A12%7D%7D%5D%5D \"Go to definition\") action to check out the repository's code into the runner environment. This ensures that the Terraform configuration files are available for subsequent steps.\n\n2. **Configure AWS Credentials**: The next step uses the [`aws-actions/configure-aws-credentials@v2`](command:_github.copilot.openSymbolFromReferences?%5B%22aws-actions%2Fconfigure-aws-credentials%40v2%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A27%2C%22character%22%3A12%7D%7D%5D%5D \"Go to definition\") action to configure AWS credentials for the GitHub Actions runner. It uses the [`AWS_ACCESS_KEY`](command:_github.copilot.openSymbolFromReferences?%5B%22AWS_ACCESS_KEY%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A29%2C%22character%22%3A39%7D%7D%5D%5D \"Go to definition\") and [`AWS_SECRET_ACCESS_KEY`](command:_github.copilot.openSymbolFromReferences?%5B%22AWS_SECRET_ACCESS_KEY%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A30%2C%22character%22%3A43%7D%7D%5D%5D \"Go to definition\") secrets stored in the repository to authenticate with AWS. The region is set to [`us-west-2`](command:_github.copilot.openSymbolFromReferences?%5B%22us-west-2%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A31%2C%22character%22%3A20%7D%7D%5D%5D \"Go to definition\").\n\n3. **Setup Terraform CLI**: This step uses the [`hashicorp/setup-terraform@v2.0.2`](command:_github.copilot.openSymbolFromReferences?%5B%22hashicorp%2Fsetup-terraform%40v2.0.2%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A34%2C%22character%22%3A12%7D%7D%5D%5D \"Go to definition\") action to install and configure the Terraform CLI on the runner. This ensures that the necessary Terraform commands can be executed.\n\n4. **Terraform Init and Validate**: This step initializes and validates the Terraform configuration. It prints the current working directory and the [`tfpath`](command:_github.copilot.openSymbolFromReferences?%5B%22tfpath%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A7%2C%22character%22%3A6%7D%7D%5D%5D \"Go to definition\") input to the console for debugging purposes. The [`terraform init`](command:_github.copilot.openSymbolFromReferences?%5B%22terraform%20init%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A36%2C%22character%22%3A22%7D%7D%5D%5D \"Go to definition\") command initializes the configuration, and the [`terraform validate`](command:_github.copilot.openSymbolFromReferences?%5B%22terraform%20validate%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A36%2C%22character%22%3A31%7D%7D%5D%5D \"Go to definition\") command checks for syntax errors and validates the configuration against the provider schemas. The [`working-directory`](command:_github.copilot.openSymbolFromReferences?%5B%22working-directory%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A45%2C%22character%22%3A6%7D%7D%5D%5D \"Go to definition\") attribute is set to the value of the [`tfpath`](command:_github.copilot.openSymbolFromReferences?%5B%22tfpath%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A7%2C%22character%22%3A6%7D%7D%5D%5D \"Go to definition\") input, ensuring that the commands are executed in the correct directory.\n\n5. **Terraform Plan and Apply**: This step generates and applies the Terraform execution plan. It prints the current working directory and the [`tfpath`](command:_github.copilot.openSymbolFromReferences?%5B%22tfpath%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A7%2C%22character%22%3A6%7D%7D%5D%5D \"Go to definition\") input to the console. The [`terraform plan`](command:_github.copilot.openSymbolFromReferences?%5B%22terraform%20plan%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A46%2C%22character%22%3A22%7D%7D%5D%5D \"Go to definition\") command generates an execution plan, showing the actions Terraform will take to achieve the desired state. The [`terraform apply -auto-approve`](command:_github.copilot.openSymbolFromReferences?%5B%22terraform%20apply%20-auto-approve%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A46%2C%22character%22%3A31%7D%7D%5D%5D \"Go to definition\") command applies the plan without requiring manual approval. The [`working-directory`](command:_github.copilot.openSymbolFromReferences?%5B%22working-directory%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A45%2C%22character%22%3A6%7D%7D%5D%5D \"Go to definition\") attribute is again set to the value of the [`tfpath`](command:_github.copilot.openSymbolFromReferences?%5B%22tfpath%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A7%2C%22character%22%3A6%7D%7D%5D%5D \"Go to definition\") input.\n\n6. **Terraform Destroy**: The final step destroys the Terraform-managed infrastructure. The [`terraform destroy -auto-approve`](command:_github.copilot.openSymbolFromReferences?%5B%22terraform%20destroy%20-auto-approve%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A60%2C%22character%22%3A18%7D%7D%5D%5D \"Go to definition\") command removes all the resources defined in the configuration without requiring manual approval. The [`working-directory`](command:_github.copilot.openSymbolFromReferences?%5B%22working-directory%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A45%2C%22character%22%3A6%7D%7D%5D%5D \"Go to definition\") attribute is set to the value of the [`tfpath`](command:_github.copilot.openSymbolFromReferences?%5B%22tfpath%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_aws.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A7%2C%22character%22%3A6%7D%7D%5D%5D \"Go to definition\") input.\n\n### Conclusion\n\nThis GitHub Actions workflow automates the process of managing AWS infrastructure using Terraform. It includes steps for checking out the code, configuring AWS credentials, setting up the Terraform CLI, initializing and validating the configuration, generating and applying the execution plan, and finally destroying the infrastructure. The use of inputs and environment variables makes the workflow flexible and reusable for different Terraform configurations.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 1292,
+          "totalElapsed": 10287
+        },
+        "metadata": {
+          "modelMessageId": "5cdaa65f-4390-4248-a55d-58f7969d93da",
+          "responseId": "d3822985-152b-43c7-b33c-f8269a06170c",
+          "sessionId": "1525ad91-45c0-4d33-b908-e1dc56aba20d",
+          "agentId": "github.copilot.workspace",
+          "command": "explain"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.workspace",
+          "subCommand": "explain",
+          "message": "What are the available options for triggering a GitHub Actions workflow?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "publisherDisplayName": "GitHub",
+        "extensionPublisherId": "GitHub",
+        "extensionDisplayName": "GitHub Copilot Chat",
+        "id": "github.copilot.workspace",
+        "description": "Ask about your workspace",
+        "metadata": {
+          "sampleRequest": "How do I build this project?",
+          "themeIcon": {
+            "id": "code"
+          },
+          "hasFollowups": true,
+          "isSecondary": true,
+          "supportIssueReporting": false
+        },
+        "name": "workspace",
+        "fullName": "Workspace",
+        "locations": [
+          "panel"
+        ],
+        "slashCommands": [
+          {
+            "name": "explain",
+            "description": "Explain how the code in your active editor works"
+          },
+          {
+            "name": "tests",
+            "description": "Generate unit tests for the selected code"
+          },
+          {
+            "name": "fix",
+            "description": "Propose a fix for the problems in the selected code",
+            "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+          },
+          {
+            "name": "new",
+            "description": "Scaffold code for a new file or project in a workspace",
+            "sampleRequest": "Create a RESTful API server using typescript",
+            "isSticky": true
+          },
+          {
+            "name": "newNotebook",
+            "description": "Create a new Jupyter Notebook",
+            "sampleRequest": "How do I create a notebook to load data from a csv file?"
+          }
+        ]
+      },
+      "slashCommand": {
+        "name": "explain",
+        "description": "Explain how the code in your active editor works"
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_code_validation_aws.yml",
+              "external": "file:///Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_code_validation_aws.yml",
+              "path": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_code_validation_aws.yml",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 63,
+              "endColumn": 1
+            }
+          }
+        }
+      ],
+      "codeCitations": []
+    },
+    {
+      "message": {
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 10
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 11
+            },
+            "agent": {
+              "extensionId": {
+                "value": "GitHub.copilot-chat",
+                "_lower": "github.copilot-chat"
+              },
+              "publisherDisplayName": "GitHub",
+              "extensionPublisherId": "GitHub",
+              "extensionDisplayName": "GitHub Copilot Chat",
+              "id": "github.copilot.workspace",
+              "description": "Ask about your workspace",
+              "metadata": {
+                "sampleRequest": "How do I build this project?",
+                "themeIcon": {
+                  "id": "code"
+                },
+                "hasFollowups": true,
+                "isSecondary": true,
+                "supportIssueReporting": false
+              },
+              "name": "workspace",
+              "fullName": "Workspace",
+              "locations": [
+                "panel"
+              ],
+              "slashCommands": [
+                {
+                  "name": "explain",
+                  "description": "Explain how the code in your active editor works"
+                },
+                {
+                  "name": "tests",
+                  "description": "Generate unit tests for the selected code"
+                },
+                {
+                  "name": "fix",
+                  "description": "Propose a fix for the problems in the selected code",
+                  "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+                },
+                {
+                  "name": "new",
+                  "description": "Scaffold code for a new file or project in a workspace",
+                  "sampleRequest": "Create a RESTful API server using typescript",
+                  "isSticky": true
+                },
+                {
+                  "name": "newNotebook",
+                  "description": "Create a new Jupyter Notebook",
+                  "sampleRequest": "How do I create a notebook to load data from a csv file?"
+                }
+              ]
+            },
+            "kind": "agent"
+          },
+          {
+            "range": {
+              "start": 10,
+              "endExclusive": 11
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 11,
+              "endLineNumber": 1,
+              "endColumn": 12
+            },
+            "text": " ",
+            "kind": "text"
+          },
+          {
+            "range": {
+              "start": 11,
+              "endExclusive": 19
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 12,
+              "endLineNumber": 1,
+              "endColumn": 20
+            },
+            "command": {
+              "name": "explain",
+              "description": "Explain how the code in your active editor works"
+            },
+            "kind": "subcommand"
+          },
+          {
+            "range": {
+              "start": 19,
+              "endExclusive": 20
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 20,
+              "endLineNumber": 1,
+              "endColumn": 21
+            },
+            "text": " ",
+            "kind": "text"
+          }
+        ],
+        "text": "@workspace /explain "
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "The provided code is a GitHub Actions workflow configuration file named [`tf_code_validation_k8s.yml`](command:_github.copilot.openRelativePath?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%5D \"/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_code_validation_k8s.yml\"). This workflow is designed to automate the validation, planning, application, and destruction of Terraform configurations specifically for Kubernetes deployments.\n\nThe workflow is named \"Terraform Kubernetes Workflow\" and is configured to trigger on two types of events: a push to the \"main\" branch and a pull request targeting the \"main\" branch. Additionally, it can be manually triggered using the [`workflow_dispatch`](command:_github.copilot.openSymbolFromReferences?%5B%22workflow_dispatch%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A10%2C%22character%22%3A2%7D%7D%5D%5D \"Go to definition\") event, which accepts an optional input parameter [`tfpath`](command:_github.copilot.openSymbolFromReferences?%5B%22tfpath%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A13%2C%22character%22%3A6%7D%7D%5D%5D \"Go to definition\") that defaults to 'kubernetes'.\n\nThe workflow consists of a single job named [`tf_code_check`](command:_github.copilot.openSymbolFromReferences?%5B%22tf_code_check%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A21%2C%22character%22%3A2%7D%7D%5D%5D \"Go to definition\"), which runs on the latest Ubuntu runner provided by GitHub Actions. The job is conditional, executing only if the [`tfpath`](command:_github.copilot.openSymbolFromReferences?%5B%22tfpath%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A13%2C%22character%22%3A6%7D%7D%5D%5D \"Go to definition\") input is provided.\n\nThe job includes several steps:\n1. **Checkout Code**: This step uses the [`actions/checkout@v2.5.0`](command:_github.copilot.openSymbolFromReferences?%5B%22actions%2Fcheckout%40v2.5.0%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A30%2C%22character%22%3A12%7D%7D%5D%5D \"Go to definition\") action to check out the repository's code.\n2. **Install Minikube**: This step installs Minikube using the [`medyagh/setup-minikube@v0.0.13`](command:_github.copilot.openSymbolFromReferences?%5B%22medyagh%2Fsetup-minikube%40v0.0.13%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A33%2C%22character%22%3A12%7D%7D%5D%5D \"Go to definition\") action.\n3. **Install Kubectl**: This step installs the [`kubectl`](command:_github.copilot.openSymbolFromReferences?%5B%22kubectl%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A36%2C%22character%22%3A24%7D%7D%5D%5D \"Go to definition\") command-line tool using the [`Azure/setup-kubectl@v3`](command:_github.copilot.openSymbolFromReferences?%5B%22Azure%2Fsetup-kubectl%40v3%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A36%2C%22character%22%3A12%7D%7D%5D%5D \"Go to definition\") action.\n4. **Setup Terraform CLI**: This step sets up the Terraform CLI using the [`hashicorp/setup-terraform@v2.0.2`](command:_github.copilot.openSymbolFromReferences?%5B%22hashicorp%2Fsetup-terraform%40v2.0.2%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A39%2C%22character%22%3A12%7D%7D%5D%5D \"Go to definition\") action.\n\nFollowing the setup steps, the workflow proceeds with several Terraform operations:\n1. **Terraform Init, Validate, and Plan**: This step initializes the Terraform configuration, validates it, and generates an execution plan. The working directory for these commands is set to the path specified by the [`tfpath`](command:_github.copilot.openSymbolFromReferences?%5B%22tfpath%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A13%2C%22character%22%3A6%7D%7D%5D%5D \"Go to definition\") input.\n2. **Terraform Apply**: This step applies the Terraform plan to provision the infrastructure, automatically approving any changes. It also uses the specified [`tfpath`](command:_github.copilot.openSymbolFromReferences?%5B%22tfpath%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A13%2C%22character%22%3A6%7D%7D%5D%5D \"Go to definition\") as the working directory.\n3. **Verify Kubernetes Deployment**: This step verifies the Kubernetes deployment by running [`kubectl get deployment`](command:_github.copilot.openSymbolFromReferences?%5B%22kubectl%20get%20deployment%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A63%2C%22character%22%3A29%7D%7D%5D%5D \"Go to definition\") in the specified namespace ([`k8s-ns-by-tf`](command:_github.copilot.openSymbolFromReferences?%5B%22k8s-ns-by-tf%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A64%2C%22character%22%3A34%7D%7D%5D%5D \"Go to definition\")).\n4. **Terraform Destroy**: This final step generates a plan to destroy the infrastructure, using the specified [`tfpath`](command:_github.copilot.openSymbolFromReferences?%5B%22tfpath%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22external%22%3A%22file%3A%2F%2F%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22path%22%3A%22%2FUsers%2Fgsaravanan%2FDocuments%2Fgithub%2Fterraform_repo%2F.github%2Fworkflows%2Ftf_code_validation_k8s.yml%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A13%2C%22character%22%3A6%7D%7D%5D%5D \"Go to definition\") as the working directory.\n\nOverall, this workflow automates the end-to-end process of validating, planning, applying, and destroying Terraform configurations for Kubernetes, ensuring that the infrastructure is correctly managed and verified.",
+          "isTrusted": {
+            "enabledCommands": [
+              "_github.copilot.openRelativePath",
+              "_github.copilot.openSymbolInFile",
+              "_github.copilot.openSymbolFromReferences"
+            ]
+          },
+          "supportThemeIcons": false,
+          "supportHtml": false
+        }
+      ],
+      "result": {
+        "timings": {
+          "firstProgress": 845,
+          "totalElapsed": 8594
+        },
+        "metadata": {
+          "modelMessageId": "d1a39df4-ed20-43f8-8691-bdac6c783afe",
+          "responseId": "3e3789d4-d993-4135-ac48-ab60d62dd77a",
+          "sessionId": "1525ad91-45c0-4d33-b908-e1dc56aba20d",
+          "agentId": "github.copilot.workspace",
+          "command": "explain"
+        }
+      },
+      "followups": [
+        {
+          "kind": "reply",
+          "agentId": "github.copilot.workspace",
+          "subCommand": "explain",
+          "message": "What are the input parameters for the \"Terraform Kubernetes Workflow\" GitHub Actions workflow?"
+        }
+      ],
+      "isCanceled": false,
+      "agent": {
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "publisherDisplayName": "GitHub",
+        "extensionPublisherId": "GitHub",
+        "extensionDisplayName": "GitHub Copilot Chat",
+        "id": "github.copilot.workspace",
+        "description": "Ask about your workspace",
+        "metadata": {
+          "sampleRequest": "How do I build this project?",
+          "themeIcon": {
+            "id": "code"
+          },
+          "hasFollowups": true,
+          "isSecondary": true,
+          "supportIssueReporting": false
+        },
+        "name": "workspace",
+        "fullName": "Workspace",
+        "locations": [
+          "panel"
+        ],
+        "slashCommands": [
+          {
+            "name": "explain",
+            "description": "Explain how the code in your active editor works"
+          },
+          {
+            "name": "tests",
+            "description": "Generate unit tests for the selected code"
+          },
+          {
+            "name": "fix",
+            "description": "Propose a fix for the problems in the selected code",
+            "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+          },
+          {
+            "name": "new",
+            "description": "Scaffold code for a new file or project in a workspace",
+            "sampleRequest": "Create a RESTful API server using typescript",
+            "isSticky": true
+          },
+          {
+            "name": "newNotebook",
+            "description": "Create a new Jupyter Notebook",
+            "sampleRequest": "How do I create a notebook to load data from a csv file?"
+          }
+        ]
+      },
+      "slashCommand": {
+        "name": "explain",
+        "description": "Explain how the code in your active editor works"
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "uri": {
+              "$mid": 1,
+              "fsPath": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_code_validation_k8s.yml",
+              "external": "file:///Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_code_validation_k8s.yml",
+              "path": "/Users/gsaravanan/Documents/github/terraform_repo/.github/workflows/tf_code_validation_k8s.yml",
+              "scheme": "file"
+            },
+            "range": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 72,
+              "endColumn": 1
+            }
+          }
+        }
+      ],
+      "codeCitations": []
+    }
+  ]
+}
