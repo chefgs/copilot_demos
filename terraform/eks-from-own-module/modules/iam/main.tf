@@ -1,5 +1,9 @@
+resource "random_id" "eks_cluster_id" {
+  byte_length = 8
+}
+
 resource "aws_iam_role" "eks_cluster_role" {
-  name = "eksClusterRole"
+  name = "eksClusterRole-${var.environment}-${random_id.eks_cluster_id.hex}"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -49,7 +53,7 @@ resource "aws_iam_role_policy_attachment" "eks_worker_node_policy" {
 
 resource "aws_iam_role_policy_attachment" "eks_cni_policy" {
   role       = aws_iam_role.eks_node_group_role.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSCNIPolicy"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
 }
 
 resource "aws_iam_role_policy_attachment" "eks_ec2_container_registry_read_only" {

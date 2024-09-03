@@ -1,5 +1,8 @@
+resource "random_id" "dynamodb_id" {
+  byte_length = 8
+}
 resource "aws_dynamodb_table" "terraform_state_lock_table" {
-  name         = var.dynamodb_table_name
+  name         = "dynamodb-${var.environment}-${random_id.dynamodb_id.hex}"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
 

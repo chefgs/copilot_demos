@@ -1,30 +1,16 @@
+resource "random_id" "bucket_id" {
+  byte_length = 8
+}
+
 resource "aws_s3_bucket" "terraform_state_bucket" {
-  bucket = var.s3_bucket_name
+  bucket = "tf-backend-${var.environment}-${random_id.bucket_id.hex}"
 
-  versioning {
-    enabled = true
-  }
+  # versioning is deprecated
 
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-      }
-    }
-  }
+  # server_side_encryption_configuration is deprecated
 
-  lifecycle_rule {
-    id      = "log"
-    enabled = true
-
-    transition {
-      days          = 30
-      storage_class = "STANDARD_IA"
-    }
-
-    expiration {
-      days = 365
-    }
+  lifecycle {
+    prevent_destroy = true
   }
 
   tags = {

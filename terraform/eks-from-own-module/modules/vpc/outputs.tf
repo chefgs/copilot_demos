@@ -3,12 +3,13 @@ output "vpc_id" {
   value       = aws_vpc.eks_vpc.id
 }
 
-output "public_subnets" {
-  description = "Public subnet IDs"
+output "public_subnet_ids" {
+  description = "List of public subnet IDs"
   value       = aws_subnet.public_subnets[*].id
 }
 
-output "private_subnets" {
-  description = "Private subnet IDs"
+output "private_subnet_ids" {
+  description = "List of private subnet IDs"
   value       = aws_subnet.private_subnets[*].id
 }
+
