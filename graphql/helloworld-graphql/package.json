@@ -1,0 +1,19 @@
+{
+  "name": "graphql-server",
+  "version": "1.0.0",
+  "description": "A basic Node.js and GraphQL server setup",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.0.0",
+    "graphql": "^16.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

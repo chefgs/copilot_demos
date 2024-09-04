@@ -1,0 +1,23 @@
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.11.0",
+    "@as-integrations/next": "^3.1.0",
+    "graphql": "^16.9.0",
+    "graphql-tag": "^2.12.6",
+    "next": "^14.2.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "name": "hello-world-graphql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
