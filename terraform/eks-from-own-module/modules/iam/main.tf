@@ -1,9 +1,9 @@
-resource "random_id" "eks_cluster_id" {
+resource "random_id" "eks_cluster_role_id" {
   byte_length = 8
 }
 
 resource "aws_iam_role" "eks_cluster_role" {
-  name = "eksClusterRole-${var.environment}-${random_id.eks_cluster_id.hex}"
+  name = "eksClusterRole-${var.environment}-${random_id.eks_cluster_role_id.hex}"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -29,8 +29,12 @@ resource "aws_iam_role_policy_attachment" "eks_service_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
 }
 
+resource "random_id" "eks_nodegroup_role_id" {
+  byte_length = 8
+}
+
 resource "aws_iam_role" "eks_node_group_role" {
-  name = "eksNodeGroupRole"
+  name = "eksNodeGroupRole-${var.environment}-${random_id.eks_nodegroup_role_id.hex}"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"

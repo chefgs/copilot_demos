@@ -44,3 +44,8 @@ variable "instance_type" {
   description = "EC2 instance type for worker nodes"
   default     = "t3.medium"
 }
+
+variable "key_name" {
+  description = "Node group instance key"
+  type = string
+}

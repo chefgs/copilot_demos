@@ -47,3 +47,8 @@ variable "node_group_iam_role_arn" {
   description = "EKS Node Group IAM Role ARN"
   type        = string
 }
+
+variable "key_name" {
+  description = "Node group instance key"
+  type = string
+}
