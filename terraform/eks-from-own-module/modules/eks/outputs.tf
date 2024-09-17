@@ -12,3 +12,11 @@ output "cluster_arn" {
   description = "EKS cluster ARN"
   value       = aws_eks_cluster.eks_cluster.arn
 }
+
+output "cluster_id" {
+  value = aws_eks_cluster.eks_cluster.id
+}
+
+output "node_group_role_arn" {
+  value = aws_eks_node_group.eks_node_group.node_role_arn
+}
