@@ -1,42 +1,83 @@
+# Define the provider
 provider "aws" {
-  region = "us-west-2"
+  region = var.region
 }
 
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+# Create a VPC
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "3.0.0"
+  version = "5.0"
 
-  name = "eks-vpc"
-  cidr = "10.0.0.0/16"
-
-  azs             = ["us-west-2a", "us-west-2b", "us-west-2c"]
-  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
-
-  enable_nat_gateway = true
-  single_nat_gateway = true
+  name                 = "eks-vpc"
+  cidr                 = var.vpc_cidr
+  azs                  = data.aws_availability_zones.available.names
+  public_subnets       = var.public_subnets
+  private_subnets      = var.private_subnets
+  enable_dns_support   = true
+  enable_dns_hostnames = true
+  enable_nat_gateway   = true
 }
 
+resource "random_id" "cluster_random_value" {
+  byte_length = 4
+}
+
+# Create EKS Cluster
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
-  cluster_name    = "my-eks-cluster"
-  cluster_version = "1.21"
-  # subnets         = module.vpc.private_subnets
+  version = "20.10"
+  cluster_name    = "${var.cluster_name}-${random_id.cluster_random_value.hex}"
+  cluster_version = "1.30"
+  subnet_ids         = module.vpc.private_subnets
   vpc_id          = module.vpc.vpc_id
+
+  # Create IAM Role for EKS Cluster
+  cluster_endpoint_public_access = true
+  cluster_enabled_log_types       = ["api", "audit", "authenticator"]
+
+  eks_managed_node_groups = {
+    eks_nodes = {
+      desired_capacity = var.desired_capacity
+      max_capacity     = var.max_capacity
+      min_capacity     = var.min_capacity
+      instance_type    = var.instance_type
+      key_name         = var.key_name
+    }
+  }
+
+  # Cluster access entry
+  # To add the current caller identity as an administrator
+  enable_cluster_creator_admin_permissions = var.is_admin ? true : false
 }
 
-output "cluster_id" {
-  value = module.eks.cluster_id
+data "aws_caller_identity" "current" {}
+
+resource "aws_eks_access_policy_association" "example" {
+  cluster_name  =  module.eks.cluster_name
+  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+  principal_arn = data.aws_caller_identity.current.arn
+
+  access_scope {
+      namespaces = ["default", "kube-system"]
+      type       = "namespace"
+  }
 }
 
+# Outputs
 output "cluster_endpoint" {
-  value = module.eks.cluster_endpoint
+  description = "EKS cluster endpoint"
+  value       = module.eks.cluster_endpoint
 }
 
-output "cluster_security_group_id" {
-  value = module.eks.cluster_security_group_id
+output "cluster_name" {
+  description = "EKS Cluster Name"
+  value = module.eks.cluster_name
 }
 
-output "node_group_role_arn" {
-  value = module.eks.node_groups["eks_nodes"].iam_role_arn
+output "eks_managed_node_groups" {
+  description = "EKS Managed Node Groups"
+  value       = module.eks.eks_managed_node_groups
 }

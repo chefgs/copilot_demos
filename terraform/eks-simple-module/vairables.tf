@@ -63,3 +63,9 @@ variable "key_name" {
   type        = string
   default     = "my-key"
 }
+
+variable "is_admin" {
+  description = "Boolean flag to indicate if the current user is an admin"
+  type        = bool
+  default     = false
+}
