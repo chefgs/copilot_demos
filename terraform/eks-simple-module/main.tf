@@ -6,6 +6,7 @@ provider "aws" {
 data "aws_availability_zones" "available" {
   state = "available"
 }
+
 # Create a VPC
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
@@ -53,31 +54,24 @@ module "eks" {
   enable_cluster_creator_admin_permissions = var.is_admin ? true : false
 }
 
+# Get the current user's ARN
 data "aws_caller_identity" "current" {}
 
-resource "aws_eks_access_policy_association" "example" {
-  cluster_name  =  module.eks.cluster_name
-  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-  principal_arn = data.aws_caller_identity.current.arn
-
-  access_scope {
-      namespaces = ["default", "kube-system"]
-      type       = "namespace"
-  }
+resource "aws_eks_access_entry" "example" {
+  cluster_name      =  module.eks.cluster_name
+  principal_arn     = data.aws_caller_identity.current.arn
+  # kubernetes_groups = ["group-1", "group-2"]
+  type              = "STANDARD"
 }
 
-# Outputs
-output "cluster_endpoint" {
-  description = "EKS cluster endpoint"
-  value       = module.eks.cluster_endpoint
-}
+# resource "aws_eks_access_policy_association" "example" {
+#  cluster_name  = module.eks.cluster_name
+#  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+#  principal_arn = data.aws_caller_identity.current.arn
 
-output "cluster_name" {
-  description = "EKS Cluster Name"
-  value = module.eks.cluster_name
-}
+#  access_scope {
+#    namespaces = ["default", "kube-system"]
+#    type       = "namespace"
+#  }
+#}
 
-output "eks_managed_node_groups" {
-  description = "EKS Managed Node Groups"
-  value       = module.eks.eks_managed_node_groups
-}
